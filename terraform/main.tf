@@ -2,8 +2,8 @@ locals {
   resource_group_name = "aksws-${var.short_region}-${var.env_tag}-rg"
   aks_name = "aksws-${var.short_region}-${var.env_tag}-aks"
   aks_cluster_sp_name = "aksws-${var.short_region}-${var.env_tag}-aks-service-principal"
-  vnet_name = "ppm-${var.short_region}-${var.env_tag}-vnet"
-  log_analytics_workspace_name = "ppm-${var.short_region}-${var.env_tag}-lga"
+  vnet_name = "aksws-${var.short_region}-${var.env_tag}-vnet"
+  log_analytics_workspace_name = "aksws-${var.short_region}-${var.env_tag}-lga"
 }
 
 resource "random_uuid" "aks_password" { }
