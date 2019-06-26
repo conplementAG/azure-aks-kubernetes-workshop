@@ -13,10 +13,11 @@ docker build . --build-arg http_proxy=http://host.docker.internal:3128 --build-a
 # Use the following for building NOT behind a corporate proxy
 # docker build . -t aksws
 ```
+* Create and configure a local `conf.env` file by copying the `conf.env.template`
 
 * Run the just built container as follows
 ```bash
-docker run -it --rm -v %cd%:/usr/src/app aksws 
+docker run -it --rm -v %cd%:/usr/src/app --env-file conf.env aksws 
 ```
 
 ## [Infrastructure with Terraform](terraform/README.md)

@@ -10,6 +10,9 @@ RUN chmod 644 /usr/local/share/ca-certificates/* && update-ca-certificates
 # libc6 required for some downloaded executable files to work (missing in go compilation for linux systems)
 RUN apk add libc6-compat
 
+# Azure CLI storage account related commands do not work without
+RUN pip install --upgrade pip
+
 ARG TERRAFORM_VERSION=0.11.13
 
 WORKDIR /usr/downloads
