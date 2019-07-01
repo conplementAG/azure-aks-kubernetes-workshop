@@ -130,3 +130,9 @@ resource "azurerm_kubernetes_cluster" "aks_cluster" {
     Environment = "${var.env_tag}"
   }
 }
+
+# resource "azurerm_role_assignment" "network_contributor_role_assignment" {
+#   scope                = "${azurerm_virtual_network.main_vnet.id}"
+#   role_definition_name = "Network Contributor"
+#   principal_id         = "${azurerm_azuread_service_principal.cluster_service_principal.id}"
+# }
