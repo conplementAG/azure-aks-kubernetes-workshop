@@ -4,17 +4,22 @@
 
 ## Introduction
 
+When using helm over k8s, then it is not suggested to do manual changes on the k8s resources as they are surely not recognized by Helm.
+
 - https://github.com/helm/helm > Quickstart Guide > Helm Commands
 
+
 ## Initialize Helm Tiller with RBAC  
-- Login to the aks cluster `az aks get-credentials -g aksws-weu-[envtag]-rg -n aksws-weu-[envtag]-aks  --overwrite-existing`
+- Login to azure and login to the aks cluster [see also](../README.md)
 - Inspect and deploy the service account with `kubectl apply -f helm-rbac.yaml`
 - Install Tiller with `helm init --service-account tiller --wait --upgrade`
 
 ## Basic commands 
 1. Create and inspect a test chart with the following steps
 - `helm create test`
-- `helm install --name myrelease ./test`
+- `helm install --dry-run --debug --name myrelease ./test`
+- Leave the `--dry-run --debug` options away to actually execute the command
+- Similarly you can also use `helm template ./test --set ingress.enabled=true`
 - `helm ls`
   
 2. Upgrade to LoadBalancer
@@ -30,8 +35,9 @@
 ## Install from Helm repo
 https://github.com/helm/charts/tree/master/stable
 - `helm repo update`
-- `helm install stable/grafana`
-
+- `helm fetch stable/redis --untar`
+- `helm install stable/redis`
+- `helm fetch`
 
 # Other useful links
 

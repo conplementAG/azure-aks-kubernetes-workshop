@@ -3,9 +3,7 @@
 TERRAFORM_STORAGE_NAME=akswsstorage$ENVTAG
 TERRAFORM_RG_NAME=aksws-$SHORT_REGION-$ENVTAG-rg
 
-echo 'Login to Azure'
-az login --service-principal -u $ARM_CLIENT_ID -p $ARM_CLIENT_SECRET --tenant $TENANT_ID
-az account set --subscription $SUBSCRIPTION_ID
+. ../azlogin.sh
 
 echo 'Create resource group'
 az group create -n $TERRAFORM_RG_NAME -l $LOCATION

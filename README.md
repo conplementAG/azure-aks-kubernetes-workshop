@@ -13,13 +13,18 @@ docker build . --build-arg http_proxy=http://host.docker.internal:3128 --build-a
 # Use the following for building NOT behind a corporate proxy
 # docker build . -t aksws
 ```
-* Create and configure a local `conf.env` file by copying the `conf.env.template`
+* Create and configure a local `config.env` file by copying the `config.env.template`
 
 * Run the just built container as follows
 ```bash
-docker run -it --rm -v %cd%:/usr/src/app --env-file conf.env aksws 
+docker run -it --rm -v %cd%:/usr/src/app --env-file config.env aksws 
 ```
 
-## [Infrastructure with Terraform](terraform/README.md)
+* Login to Azure
+From inside the container you have to be logged in to Azure either by executing the `azlogin.sh` script or by directly running `az login` correctly parameterized 
+
+* Create the [Infrastructure with Terraform](terraform/README.md)
+
+* Login to the aks cluster with `az aks get-credentials -g aksws-weu-$ENVTAG-rg -n aksws-weu-$ENVTAG-aks --overwrite-existing`
 
 ## [Application Deployment with Helm](helm/README.md)

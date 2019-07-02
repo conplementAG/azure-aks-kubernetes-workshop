@@ -3,4 +3,4 @@ terraform.tfstate
 
 corporate_certs
 
-conf.env
+config.env
