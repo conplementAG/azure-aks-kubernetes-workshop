@@ -1,0 +1,25 @@
+version: '3.4'
+
+services:
+  backend:
+    image: ${DOCKER_REGISTRY}backend
+    build:
+      context: Backend
+      dockerfile: Dockerfile
+    networks:
+      default-nw:
+
+  frontend:
+    image: ${DOCKER_REGISTRY}frontend
+    build:
+      context: Frontend
+      dockerfile: Dockerfile
+    environment:
+      - COLOR=orange
+    networks:
+      default-nw:
+    volumes:
+      - ./Frontend:/usr/src/app
+
+networks:
+    default-nw:
