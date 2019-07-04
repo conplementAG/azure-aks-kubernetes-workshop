@@ -5,5 +5,3 @@ corporate_certs
 
 config.env
 .vs
-obj
-node_modules

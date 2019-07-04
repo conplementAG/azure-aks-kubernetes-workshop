@@ -14,7 +14,7 @@ router.get('/', function (req, res, next) {
 
   let backend_baseurl = process.env.BACKEND_BASEURL
   if (backend_baseurl === undefined) {
-    backend_baseurl = "https://localhost:44388"
+    backend_baseurl = "http://localhost:5000"
   }
 
   res.render('index',
