@@ -1,0 +1,10 @@
+global:
+  ImageRegistry: akswsweuacr.azurecr.io
+  Frontend:
+    ServiceName: frontend
+    Port: 80
+    BaseUrl: /
+  Backend:
+    ServiceName: backend
+    Port: 80
+    BaseUrl: /

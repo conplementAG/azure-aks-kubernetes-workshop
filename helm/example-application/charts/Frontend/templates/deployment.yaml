@@ -1,0 +1,79 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.global.Frontend.ServiceName }}
+  namespace: {{ .Release.Namespace }}
+  labels:
+    heritage: {{ .Release.Service }}
+    release: {{ .Release.Name }}
+    chart: {{ .Chart.Name }}-{{ .Chart.Version }}
+    app: {{ .Values.global.Frontend.ServiceName }}
+spec:
+  replicas: {{ .Values.ReplicaCount }}
+  selector:
+    matchLabels:
+      app: {{ .Values.global.Frontend.ServiceName }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.global.Frontend.ServiceName }}
+      namespace: {{ .Release.Namespace }}
+    spec:
+      restartPolicy: Always
+      containers:
+        - name: {{ .Values.global.Frontend.ServiceName }}-container
+          image: {{ .Values.global.ImageRegistry }}/{{ .Values.ImageName }}:{{ .Values.ImageVersion }}
+          imagePullPolicy: Always
+          ports:
+            - containerPort: {{ .Values.global.Frontend.Port }}
+          env:
+            - name: COLOR
+              value: {{ .Values.Settings.Color }}
+            - name: PORT
+              value: "{{ .Values.global.Frontend.Port }}"
+            - name: BACKEND_BASEURL
+              value: {{ .Values.global.Backend.BaseUrl }}
+            - name: VERSION
+              value: {{ .Values.Settings.Version }}
+          
+          ######################
+          # Probes
+          ######################
+
+          # Ready: Not Ready Pods will not recieve traffic, but not be restarted
+          readinessProbe:
+            httpGet:
+              path: /health/ready
+              port: {{ .Values.global.Frontend.Port }}
+            initialDelaySeconds: 15
+            periodSeconds: 5
+            timeoutSeconds: 1
+          
+          # Live: Dead Pods will be restarted
+          livenessProbe:
+            httpGet:
+              path: /health/live
+              port: {{ .Values.global.Frontend.Port }}
+            initialDelaySeconds: 15
+            periodSeconds: 5
+            timeoutSeconds: 1
+
+          ######################
+          # Resources Management
+          ######################
+          resources:
+            
+            # Requests: Garantueed: only schedules if available on node
+            requests:
+              memory: "100Mi"
+              cpu: "10m"
+            
+            # Limits: Pods never goes above a limit
+            # Must not be higher than maximum in limitrange
+            limits:
+
+              # Not Compressable Unit: Killed if above a limit (evicted)
+              memory: "200Mi"
+
+              # Compressable Unit: Throttles if at limit
+              cpu: "250m"
