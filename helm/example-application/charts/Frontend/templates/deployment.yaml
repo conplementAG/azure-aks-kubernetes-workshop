@@ -36,6 +36,8 @@ spec:
             - name: VERSION
               value: {{ .Values.Settings.Version }}
           
+          {{- if .Values.global.HealthChecks.enabled  }}
+          
           ######################
           # Probes
           ######################
@@ -58,6 +60,10 @@ spec:
             periodSeconds: 5
             timeoutSeconds: 1
 
+          {{ end }}
+
+          {{- if .Values.global.ResourceManagement.enabled  }}
+
           ######################
           # Resources Management
           ######################
@@ -77,3 +83,4 @@ spec:
 
               # Compressable Unit: Throttles if at limit
               cpu: "250m"
+          {{ end  }}

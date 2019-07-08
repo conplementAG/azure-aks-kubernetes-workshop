@@ -36,7 +36,7 @@ docker push <docker registry url>/workshop/frontend:latest
 docker push <docker registry url>/workshop/backend:latest
 ```
 
-## Install Helm Chart
+## Step 1: Install Helm Chart
 
 ```bash
 # Install the nginx ingress controller
@@ -45,6 +45,8 @@ helm install --namespace <yournamespace> --name ingress-controller-release stabl
 # Install the acutal application
 helm install --namespace <yournamespace> --name example-application-release example-application
 ```
+
+## Step 2: Override environment variables
 
 ## Environment Variables
 
@@ -64,3 +66,35 @@ The two applications can be configured by the following environment variables:
 * `VERSION`: The Version that will be displayed
 
 These variables can be set in the `values.yaml` files or by the [`--set` parameter](https://helm.sh/docs/using_helm/).
+
+For example:
+
+```bash
+helm upgrade example-application-release example-application --namespace <yournamespace> --set Frontend.Settings.Color=pink
+
+# Browse to public IP of the ingress-controller and check for the new color
+kubectl get svc -n <yournamespace>
+```
+
+
+## Step 3: Enable Health Checks
+
+See [this blog post](https://cloud.google.com/blog/products/gcp/kubernetes-best-practices-setting-up-health-checks-with-readiness-and-liveness-probes) for further information.
+
+```bash
+helm upgrade example-application-release example-application --namespace <yournamespace> --set Frontend.Settings.Color=pink,global.HealthChecks.enabled=true
+
+# Check Health Check Urls
+kubectl describe deployment -n <yournamespace> frontend
+```
+
+## Step 4: Enable Resource Management
+
+See [this blog post](https://cloud.google.com/blog/products/gcp/kubernetes-best-practices-setting-up-health-checks-with-readiness-and-liveness-probes) for further information.
+
+```bash
+helm upgrade example-application-release example-application --namespace <yournamespace> --set Frontend.Settings.Color=pink,global.HealthChecks.enabled=true,global.ResourceManagement.enabled=true
+
+# Check Limits and Requests
+kubectl describe deployment -n <yournamespace> frontend
+```

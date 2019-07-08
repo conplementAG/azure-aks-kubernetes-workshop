@@ -1,3 +1,4 @@
+{{- if .Values.global.ResourceManagement.enabled  }}
 apiVersion: v1
 kind: ResourceQuota
 metadata:
@@ -14,3 +15,4 @@ spec:
     # Total CPU and total memory limits
     limits.cpu: "2000m"
     limits.memory: 2Gi
+{{ end }}

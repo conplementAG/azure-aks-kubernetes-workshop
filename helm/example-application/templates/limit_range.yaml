@@ -1,3 +1,4 @@
+{{- if .Values.global.ResourceManagement.enabled  }}
 apiVersion: v1
 kind: LimitRange
 metadata:
@@ -24,3 +25,4 @@ spec:
       cpu: 10m
       memory: 50Mi
     type: Container
+{{ end }}
