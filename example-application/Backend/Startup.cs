@@ -40,6 +40,7 @@ namespace Backend
             {
                 options.Filters.Add(new CorsAuthorizationFilterFactory("AllowAnyOrigin"));
             });
+            services.AddHealthChecks();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -58,14 +59,15 @@ namespace Backend
             app.UseSwagger();
             app.UseSwaggerUI(c =>
             {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Demo App API");
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
             });
-
-            
-
             app.UseMvc();
             app.UseHttpsRedirection();
             app.UseCors("AllowAnyOrigin");
+
+            // In real world scenarios ready and live should not be the same
+            app.UseHealthChecks("/health/ready");
+            app.UseHealthChecks("/health/live");
         }
     }
 }
