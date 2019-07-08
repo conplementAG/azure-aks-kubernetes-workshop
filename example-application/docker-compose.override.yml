@@ -1,0 +1,19 @@
+version: '3.4'
+
+services:
+  backend:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:80
+      - VERSION=1.0.0.0
+    ports:
+      - "8081:80"
+# ---------------------------
+  frontend:
+    environment:
+      - COLOR=limegreen
+      - PORT=80
+      - BACKEND_HOST=http://localhost:8081
+      - VERSION=1.0.0.0
+    ports:
+      - "8080:80"

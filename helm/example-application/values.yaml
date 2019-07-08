@@ -1,0 +1,12 @@
+global:
+  ImageRegistry: akswsweuacr.azurecr.io
+  Frontend:
+    ServiceName: frontend
+    Port: 80
+    BaseUrl: /
+  Backend:
+    ServiceName: backend
+    Port: 80
+    
+    # Use an empty hostname to force the same host for backend and frontend
+    Host:

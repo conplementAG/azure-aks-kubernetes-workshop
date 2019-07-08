@@ -32,6 +32,10 @@ When using helm over k8s, then it is not suggested to do manual changes on the k
 - `helm ls -all`
 - `helm delete myrelease --purge`
 
+## Example Application
+
+To deploy the example application with helm see: [helm-example-application.md](helm-example-application.md).
+
 ## Install from Helm repo
 https://github.com/helm/charts/tree/master/stable
 - `helm repo update`

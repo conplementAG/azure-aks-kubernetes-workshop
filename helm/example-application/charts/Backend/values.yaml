@@ -1,0 +1,6 @@
+ImageName: workshop/backend
+ImageVersion: latest
+ReplicaCount: 1
+
+Settings:
+  Version: 1.0.0.0

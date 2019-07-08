@@ -1,0 +1,7 @@
+ImageName: workshop/frontend
+ImageVersion: latest
+ReplicaCount: 3
+
+Settings:
+  Color: blue
+  Version: 1.0.0.0
