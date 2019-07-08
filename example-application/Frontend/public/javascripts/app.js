@@ -11,12 +11,13 @@ class AppRoot extends React.Component {
             isLoaded: false,
             items: [],
             version: window.VERSION,
-            backend_baseurl: window.BACKEND_BASEURL
+            backend_version: "unknown",
+            backend_host: window.BACKEND_HOST
         };
     }
 
     componentDidMount() {
-        fetch(this.state.backend_baseurl + "/api/team")
+        fetch(this.state.backend_host + "/api/team")
             .then(res => res.json())
             .then(
                 (result) => {
@@ -34,11 +35,24 @@ class AppRoot extends React.Component {
                     });
                 }
             )
+
+        fetch(this.state.backend_host + "/api/version")
+            .then(res => res.json())
+            .then(
+                (result) => {
+                    this.setState({ backend_version: result.major + "." + result.minor + "." + result.build + "." + result.revision });
+                },
+                (error) => {
+                    console.error("Error loading backend version")
+                    console.error(error)
+                }
+            )
+
     }
 
     selectTeam(teamName) {
         if (this.state.teamNames !== undefined) {
-            fetch(this.state.backend_baseurl + "/api/team/" + teamName)
+            fetch(this.state.backend_host + "/api/team/" + teamName)
                 .then(res => res.json())
                 .then(
                     (result) => {
@@ -126,8 +140,8 @@ class AppRoot extends React.Component {
                     <p><i className="fas fa-info-circle"></i> The color can be configured via environment variable: <strong>COLOR</strong></p>
                 </div>
                 <div className="content">
-                    <small><i className="fas fa-info-circle"></i> Here some ajax request will be performed</small>
-                    <pre>{ this.state.backend_baseurl }</pre>
+                    <small><i className="fas fa-info-circle"></i> Here some ajax request will be performed</small><br />
+                    <a href={ this.state.backend_host + "/health/ready" } target="_blank">Backend: { this.state.backend_host } <span className="badge badge-secondary">{ this.state.backend_version }</span></a>
                     <div>
                         <h3>Teams</h3>
                         { teamSelection }

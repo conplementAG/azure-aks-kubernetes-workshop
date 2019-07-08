@@ -65,10 +65,10 @@ The default version is `0.0.0.0`.
 
 ### Backend Url
 
-To communicate with the backend and load data, the application performs ajax requests. The url where the backend can be reached can be configured with the environment variable `BACKEND_BASEURL`.
+To communicate with the backend and load data, the application performs ajax requests. The url where the backend can be reached can be configured with the environment variable `BACKEND_HOST`.
 
 ```
-BACKEND_BASEURL=https://localhost:8081
+BACKEND_HOST=https://localhost:8081
 ```
 
 The default backend url is `http://localhost:8080`.

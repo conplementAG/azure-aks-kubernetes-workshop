@@ -31,8 +31,8 @@ spec:
               value: {{ .Values.Settings.Color }}
             - name: PORT
               value: "{{ .Values.global.Frontend.Port }}"
-            - name: BACKEND_BASEURL
-              value: {{ .Values.global.Backend.BaseUrl }}
+            - name: BACKEND_HOST
+              value: {{ .Values.global.Backend.Host }}
             - name: VERSION
               value: {{ .Values.Settings.Version }}
           

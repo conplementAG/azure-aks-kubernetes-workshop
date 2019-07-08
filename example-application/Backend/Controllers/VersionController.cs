@@ -15,7 +15,7 @@ namespace Backend.Controllers
             var versionString = Environment.GetEnvironmentVariable("VERSION");
             
             Version version;
-            if(Version.TryParse(versionString, out version))
+            if(!Version.TryParse(versionString, out version))
             {
                 Version.TryParse(DEFAULT_VERSION, out version);
             }

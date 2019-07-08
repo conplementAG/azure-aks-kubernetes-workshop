@@ -12,17 +12,16 @@ router.get('/', function (req, res, next) {
     version = "0.0.0.0"
   }
 
-  let backend_baseurl = process.env.BACKEND_BASEURL
-  if (backend_baseurl === undefined) {
-    backend_baseurl = "http://localhost:5000"
+  let backend_host = process.env.BACKEND_HOST
+  if (backend_host === undefined) {
+    backend_host = "http://localhost:5000"
   }
 
   res.render('index',
     {
       color: color,
       version: version,
-      backend_baseurl: backend_baseurl,
-
+      backend_host: backend_host,
     });
 });
 
