@@ -6,7 +6,9 @@
 
 ### Prepare for the following questions (5 min)
 
-- Kubernetes experience
+- Who is currently using K8s in production?
+- Who has experience with basic kubernetes concepts (deployment, pod, etc.)?
+- Who was already using Helm for K8s deployments?
 - ...
 
 ## DAY 3
