@@ -1,5 +1,11 @@
 # Helm Chart - Example Application
 
+## Overview
+
+Inline-style: 
+![Overview Image](example-application.png "Overview")
+
+
 ## Prerequesites
 
 * Docker (https://www.docker.com/get-started)
