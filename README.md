@@ -28,3 +28,5 @@ From inside the container you have to be logged in to Azure either by executing 
 * Login to the aks cluster with `az aks get-credentials -g aksws-weu-$ENVTAG-rg -n aksws-weu-$ENVTAG-aks --overwrite-existing`
 
 ## [Application Deployment with Helm](helm/README.md)
+
+## [Application Deployment with CNAB](cnab/README.md)

@@ -41,9 +41,11 @@ https://github.com/helm/charts/tree/master/stable
 - `helm repo update`
 - `helm fetch stable/redis --untar`
 - `helm install stable/redis`
-- `helm fetch`
 
-# Other useful links
+## Helm 3 Sneak Preview
+- [Sneak Preview](https://jdolitsky.github.io/helm2-helm3-migration/files/helm_3_sneak_preview.pdf)
+- [Design Proposal](https://github.com/helm/community/tree/master/helm-v3)
+
+## Other useful links
 
 https://www.katacoda.com/courses/kubernetes/helm-package-manager
-
