@@ -1,5 +1,9 @@
 # Backend
 
+## Prerequisites
+
+* [.NET Core Runtime 2.2+](https://dotnet.microsoft.com/download)
+
 ## Introduction
 
 This is a simple .net core web application, that has a REST api.

@@ -1,5 +1,9 @@
 # Frontend
 
+## Prerequisites
+
+* [node.js v10.X](https://nodejs.org/en/download/)
+
 ## Introduction
 
 This is a very simple node.js application, that provides a react.js UI with express.

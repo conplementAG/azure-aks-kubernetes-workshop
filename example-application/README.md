@@ -21,5 +21,6 @@ Browse to http://localhost:8080
 
 For more information see
 
-* [Frontend/readme.md](Frontend/readme.md)
-* [Backend/readme.md](Backend/readme.md)
+* [Frontend/README.md](Frontend/README.md)
+* [Backend/README.md](Backend/README.md)
+* [Deployment with helm](../helm/README.md)
