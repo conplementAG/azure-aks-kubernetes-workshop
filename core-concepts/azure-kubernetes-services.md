@@ -1,35 +1,34 @@
-# Azure Kubernetes Service
+# Azure Kubernetes Service Subtleties
 
 Managed kubernetes from Azure comes with some additional components, which will be described below.
 
+## acs-engine
+
 The base for kubernetes on Azure is aks-engine, which is based on acs-engine:
 
-https://github.com/Azure/aks-engine
-https://github.com/Azure/aks-engine/tree/master/parts/k8s
+* https://github.com/Azure/aks-engine
+* https://github.com/Azure/aks-engine/tree/master/parts/k8s
 
-If you look at the default pods in the kube-system namespace you will find some pods that are not listed in the default system-components section:
+## Special System-Pods in AKS deployment
 
-```
+If you look at the default pods in the kube-system namespace you will find some pods that are not listed in the default [system componenents](system-components.md) section:
+
+```bash
 > kubectl get pods -n kube-system
 
 azure-cni-networkmonitor-7xk58
-azure-cni-networkmonitor-dbbjh
-azure-cni-networkmonitor-qh2xr
+...
 azure-ip-masq-agent-5lvgq
-azure-ip-masq-agent-6g565
-azure-ip-masq-agent-x96v4
-coredns-67fd67489b-bfzgt
-coredns-67fd67489b-nbhgr
+...
+...
 coredns-autoscaler-f654c64fd-tjfcb
 heapster-6d879b9dc8-mzqwv
 kube-proxy-2lbdd
-kube-proxy-plgrc
-kube-proxy-xbdmr
+...
 kubernetes-dashboard-69bd89c8f7-7nfcz
 metrics-server-67c75dbf7-jxnjp
 omsagent-2qtrm
-omsagent-qsdds
-omsagent-rkbzx
+...
 omsagent-rs-59bdc565b8-5n4rk
 tiller-deploy-7b659b7fbd-sr8l5
 tunnelfront-bcb7f4d6f-j8w99
@@ -66,4 +65,4 @@ Metrics Server is a cluster-wide aggregator of resource usage data. Runs on a si
 
 ### General Monitoring overview in acs-engine (AKS)
 
-https://github.com/Azure/acs-engine/blob/master/docs/kubernetes/monitoring.md
+See https://github.com/Azure/acs-engine/blob/master/docs/kubernetes/monitoring.md
