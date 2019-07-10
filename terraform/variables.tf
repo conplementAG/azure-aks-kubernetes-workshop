@@ -7,3 +7,4 @@ variable "tenant_id" {}
 variable "cluster_server_app_id" {}
 variable "cluster_server_app_secret" {}
 variable "cluster_client_app_id" {}
+variable "cluster_admin_group_id" {}
