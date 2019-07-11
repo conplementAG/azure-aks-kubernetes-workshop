@@ -8,7 +8,8 @@ There are multiple CNAB clients out there, e.g.: [duffle](https://duffle.sh/) or
 
 ## First steps
 
-- Get the duffle sources from [github](https://github.com/deislabs/duffle)
+- Get the duffle sources with `git clone https://github.com/deislabs/duffle.git` from [github](https://github.com/deislabs/duffle)
+- To install it for your system you can also checkout the latest [releases](https://github.com/deislabs/duffle/releases)
 - Install and uninstall the helloworld example as described on github
 - Inspect the sources
 
