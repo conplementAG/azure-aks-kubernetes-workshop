@@ -10,6 +10,8 @@ When creating Kubernetes Resources with terraform ([See also](../terraform/READM
 
 ## Configuration via Config Maps and Secrets
 
+![ConfigMaps and Secrets](KubernetesResourcesDeployment.png "ConfigMaps and Secrets")
+
 A good [Stackoverflow](https://stackoverflow.com/questions/33478555/kubernetes-equivalent-of-env-file-in-docker) article about configuring pods.
 
 * Create a ConfigMap resource from YAML
@@ -43,7 +45,7 @@ kubectl apply -f file-configmap.yaml
 kubectl apply -f nginx-configmaps-and-secrets.yaml
 ```
 
-* Check out the environmental variables contents
+* Check out the environmental variables and file contents
 
 ```bash
 kubectl exec -it nginx-configmaps-and-secrets printenv
@@ -52,6 +54,7 @@ kubectl exec -it nginx-configmaps-and-secrets cat /filemount/file.text
 
 ## Configuration via infrastructure creation
 
+Some of the secrets are created during the infrastructure creation, when using Terraform and the Kubernetes provider it can look like this [example](../terraform/kubernetes.tf).
 ![Infrastructure Creation](KubernetesConfigurationScenarios.png "Infrastructure Creation")
 
 ## Key Rotation
@@ -76,7 +79,8 @@ kubectl create secret generic kvcreds --from-literal clientid=$ARM_CLIENT_ID --f
 
 * Create the pod with the FlexVolume referencing the Azure Key Vault
 
-Edit the `nginx-flex-kv.yaml` file and replace values `"..."` with your environment's settings.
+  * Edit the `nginx-flex-kv.yaml` file and replace values `"..."` with your environment's settings.
+  * Optionally you could create a helm chart with `helm create nginx-flex-kv` and put the yaml file in the templates folder. The `"..."` parts can be replaced by setting the helm values.
 
 ```bash
 kubectl create -f nginx-flex-kv.yaml
@@ -88,6 +92,14 @@ kubectl create -f nginx-flex-kv.yaml
 kubectl exec -it nginx-flex-kv cat /kvmnt/test-secret
 ```
 
+* Using Azure Key Vault Certificates as environmental variables
+
+See the [description](https://mrdevops.io/introducing-azure-key-vault-to-kubernetes-931f82364354) and their [github repo](https://github.com/SparebankenVest/azure-key-vault-to-kubernetes)
+
+#### Further reading
+
 For more details [See also](https://github.com/Azure/kubernetes-keyvault-flexvol)
+
+
 
 ### Hashicorp Vault
