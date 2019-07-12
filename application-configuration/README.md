@@ -66,6 +66,8 @@ For a CICD example [See also](https://blog.kloud.com.au/2018/09/19/automatic-key
 ## Configuration via Key Vaults
 
 ### Azure Key Vault
+
+#### Using Key Vault with credentials in a Kubernetes Secret
 * Install the Key Vault FlexVolume
 ```bash
 kubectl create -f https://raw.githubusercontent.com/Azure/kubernetes-keyvault-flexvol/master/deployment/kv-flexvol-installer.yaml
@@ -91,8 +93,46 @@ kubectl create -f nginx-flex-kv.yaml
 ```bash
 kubectl exec -it nginx-flex-kv cat /kvmnt/test-secret
 ```
+#### Using Key Vault with Pod Identity
 
-* Using Azure Key Vault Certificates as environmental variables
+* Inspect the contents of the [keyvault.tf](../terraform/keyvault.tf) and the [podidentity.tf](../terraform/podidentity.tf) templates
+
+* Run this command to create the aad-pod-identity deployment on an RBAC-enabled cluster:
+  
+```bash
+kubectl apply -f https://raw.githubusercontent.com/Azure/aad-pod-identity/master/deploy/infra/deployment-rbac.yaml
+```
+* Get the identity created by the terraform template
+```bash
+```
+
+* Replace the `<>` parts in the `aadpodidentity.yaml` file with the values of `id` and `clientId` gotten from the `az identity list` command and then apply identity and the binding
+
+```bash
+az identity list -g aksws-weu-$ENVTAG-rg
+
+kubectl apply -f aadpodidentity.yaml
+kubectl apply -f aadpodidentitybinding.yaml
+```
+* Create an example deployment with the `nginx-flex-kv-podidentity.yaml` (again replace the `"..."`s) and check out the pod and the `AzureAssignedIdentity` created based on the `AzureIdentityBinding` blueprint from the `aadpodidentitybinding.yaml`
+
+```bash
+kubectl apply -f nginx-flex-kv-podidentity.yaml
+
+kubectl describe pod nginx-flex-kv-podid
+
+kubectl get AzureAssignedIdentity
+NAME                                         AGE
+nginx-flex-kv-podid-default-aadpodidentity   20m
+```
+
+* Validate the pod can access the secret from Key Vault
+```bash
+kubectl exec -it nginx-flex-kv-podid cat /kvmnt/test-secret
+secret-secret
+```
+
+#### Using Azure Key Vault Certificates as environmental variables
 
 See the [description](https://mrdevops.io/introducing-azure-key-vault-to-kubernetes-931f82364354) and their [github repo](https://github.com/SparebankenVest/azure-key-vault-to-kubernetes)
 
