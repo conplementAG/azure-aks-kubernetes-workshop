@@ -17,6 +17,7 @@ spec:
     metadata:
       labels:
         app: {{ .Values.global.Backend.ServiceName }}
+        dev: peter
       namespace: {{ .Release.Namespace }}
     spec:
       restartPolicy: Always
@@ -26,6 +27,7 @@ spec:
           imagePullPolicy: Always
           ports:
             - containerPort: {{ .Values.global.Backend.Port }}
+              name: http
           env:
             - name: ASPNETCORE_ENVIRONMENT
               value: Development

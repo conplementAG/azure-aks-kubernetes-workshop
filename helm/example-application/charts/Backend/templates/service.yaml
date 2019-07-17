@@ -8,10 +8,13 @@ metadata:
     release: {{ .Release.Name }}
     chart: {{ .Chart.Name }}-{{ .Chart.Version }}
     app: {{ .Values.global.Backend.ServiceName }}
+    monitor: prom
 spec:
   ports:
     - port: {{ .Values.global.Backend.Port }}
-      targetPort: {{ .Values.global.Backend.Port }}
+      targetPort: http
+      name: http
   selector:
     app: {{ .Values.global.Backend.ServiceName }}
+    dev: peter
   type: ClusterIP

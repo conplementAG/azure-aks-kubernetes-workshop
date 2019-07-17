@@ -18,3 +18,7 @@ spec:
         backend:
           serviceName: {{ .Values.global.Backend.ServiceName }}
           servicePort: {{ .Values.global.Backend.Port }}
+      - path: /swagger
+        backend:
+          serviceName: {{ .Values.global.Backend.ServiceName }}
+          servicePort: {{ .Values.global.Backend.Port }}

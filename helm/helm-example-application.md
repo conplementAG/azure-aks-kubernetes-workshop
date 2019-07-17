@@ -28,7 +28,11 @@ Before deploying the example application into your kubernetes cluster, you have 
 docker login <docker registry url>
 # Type in your username and password
 
-# Assuming that you already built your docker images locally
+# Build (make sure you are in the right directory (/example-application))
+docker build Frontend -t workshop/frontend
+docker build Backend -t workshop/backend
+
+# Push
 docker tag workshop/frontend <docker registry url>/workshop/frontend:latest
 docker tag workshop/backend <docker registry url>/workshop/backend:latest
 
@@ -89,6 +93,13 @@ kubectl describe deployment -n <yournamespace> frontend
 ```
 
 ## Step 4: Enable Resource Management
+
+Resource-Management is essiential when using logic isolation.
+
+Microsoft developed kube-advisor for getting resource recommendations for your cluster.
+```bash
+kubectl run --rm -i -t kube-advisor --image=mcr.microsoft.com/aks/kubeadvisor --restart=Never
+```
 
 See [this blog post](https://cloud.google.com/blog/products/gcp/kubernetes-best-practices-setting-up-health-checks-with-readiness-and-liveness-probes) for further information.
 
