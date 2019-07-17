@@ -16,7 +16,7 @@ terraform {
 }
 
 provider "azurerm" {
-  version = "=1.26"
+  version = "=1.31"
   subscription_id = "${var.subscription_id}"
   tenant_id       = "${var.tenant_id}"
   # service principal client id & secret will be read from ARM_CLIENT_ID / ARM_CLIENT_SECRET env variables if set, 
@@ -96,6 +96,7 @@ resource "azurerm_kubernetes_cluster" "aks_cluster" {
     count           = 3
     vm_size         = "Standard_DS2_v2"
     vnet_subnet_id  = "${azurerm_subnet.cluster_subnet.id}"
+    type            = "VirtualMachineScaleSets"
   }
 
   role_based_access_control {
