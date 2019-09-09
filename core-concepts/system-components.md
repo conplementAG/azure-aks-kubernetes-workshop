@@ -59,7 +59,11 @@ They are responsible for:
 * Manages Pods on nodes
 * Also Virtual Kubelet: *"Kubernetes API on top, programmable bac"*: [Github virtual-kubelet](https://github.com/virtual-kubelet/virtual-kubelet)
 
+Used for connecting AKS to ACI (e.g. burst traffic spikes).
+
 ### kube-proxy
+
+Runs on the nodes, takes the traffic e.g. from Load-Balancer and sends it to the pods round robin. 
 
 * [Github: kube-proxy](https://github.com/kubernetes/kubernetes/tree/master/cmd/kube-proxy)
 * Networking Abstraction
