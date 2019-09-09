@@ -1,0 +1,19 @@
+# helm install -f metric-config.yaml --name prometheus-adapter-release stable/prometheus-adapter
+prometheus:
+  url: http://prometheus-operated.kube-system.svc
+  port: 9090
+# rules:
+#   default: false
+#   custom:
+#   - seriesQuery: 'custom_queue_total_count{}'
+#     seriesFilters: []
+#     resources:
+#       overrides:
+#         namespace:
+#           resource: namespace
+#         pod_name:
+#           resource: pod
+#     name:
+#       matches: "custom_queue_total_count"
+#       as: ""
+#     metricsQuery: sum(rate(<<.Series>>{<<.LabelMatchers>>,container_name!="POD"}[1m]))
