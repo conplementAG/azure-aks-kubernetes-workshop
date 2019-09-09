@@ -1,6 +1,14 @@
-# azure-kubernetes-workshop
+# Azure Kubernetes Workshop
 
-azure-kubernetes-workshop is a workshop documentation with hands-on exercises for people already working with Kubernetes. Throughout the workshop a main Docker container will be used which is to be built and started in an interactive mode.
+![conplement.de](conplement-github-logo.jpg)
+
+`azure-kubernetes-workshop` is a workshop documentation with hands-on exercises for people already working with Kubernetes. Throughout the workshop a main Docker container will be used which is to be built and started in an interactive mode.
+
+**Status: In Progress**
+
+:warning: :construction:
+
+Current this project is heaviliy in progress.
 
 ## Prerequisits
 
@@ -26,10 +34,20 @@ docker build . -t aksws
 
 - Create and configure a local `config.env` file by copying the `config.env.template`
 
-- Run the just built container as follows
+## Run the main container
+
+### Run without a cooperate proxy
 
 ```bash
 docker run -it --rm -v %cd%:/usr/src/app --env-file config.env aksws
+```
+
+### Run behind a cooperate proxy
+
+Make sure you can authenticate towards your cooprate proxy via a local proxy (cntlm etc.) over port 3128.
+
+```bash
+docker run -it --rm -v %cd%:/usr/src/app --env HTTP_PROXY=http://docker.for.win.localhost:3128 --env HTTPS_PROXY=http://docker.for.win.localhost:3128 --env-file ./config.env aksws
 ```
 
 ## Create Infrastructre
@@ -52,3 +70,5 @@ For more information see [Helm](helm/README.md)
 For more information see [CNAB](cnab/README.md)
 
 ## Application configuration
+
+TBD
