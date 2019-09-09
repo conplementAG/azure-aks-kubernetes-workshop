@@ -1,18 +1,8 @@
 # Agenda
 
-Example schedule per day:
-
-- 09:00 - 10:15 Part 1
-- :coffee: break
-- 10:30 - 12:00 Part 2
-- :hamburger: :pizza: lunch
-- 13:00 - 14:45 Part 3
-- :coffee: break
-- 15:00 - 16:45 Part 4
-
 ## DAY 1
 
-#### Part 1
+#### Part 1: _10:00 - 11:00_
 
 Introduction
 
@@ -24,7 +14,9 @@ Introduction
 - Setup Tooling for every participant (docker, azure, cli)
 - Decide Team lineup for example work
 
-#### Part 2
+:coffee: break
+
+#### Part 2: _11:15 - 12:15_
 
 AKS Basics
 
@@ -33,7 +25,9 @@ AKS Basics
 - AKS Operations with Terraform (throughout the course)
 - AKS Kubernetes System Internals
 
-#### Part 3
+:hamburger: :pizza: lunch
+
+#### Part 3: _13:15 - 14:45_
 
 Application deployment **(Hands-On)**
 
@@ -41,7 +35,9 @@ Application deployment **(Hands-On)**
 - helm
 - CNAB
 
-#### Part 4
+:coffee: break
+
+#### Part 4: _15:00 - 16:45_
 
 Application configuration **(Hands-On)**
 
@@ -55,7 +51,7 @@ Application configuration **(Hands-On)**
 
 ## DAY 2
 
-#### Part 1
+#### Part 1: _09:00 - 10:15_
 
 Recap of DAY 1
 
@@ -65,7 +61,9 @@ Networking
 - Network segmentation
 - Network policies
 
-#### Part 2
+:coffee: break
+
+#### Part 2: _10:30 - 12:00_
 
 Application Configuration **(Hands-On)**
 
@@ -73,14 +71,18 @@ Application Configuration **(Hands-On)**
 - Configmaps
 - Connecting Azure KeyVault or external Vaults
 
-#### Part 3
+:hamburger: :pizza: lunch
+
+#### Part 3: _13:00 - 14:30_
 
 Service Discovery **(Hands-On)**
 
 - Tagging
 - Load Balancing
 
-#### Part 4
+:coffee: break
+
+#### Part 4: _14:45 - 16:45_
 
 Ingress **(Hands-On)**
 
@@ -94,7 +96,7 @@ Egress
 
 ## DAY 3
 
-#### Part 1
+#### Part 1: _09:00 - 10:15_
 
 Recap of Day 2
 
@@ -103,13 +105,19 @@ Advanced Usage
 - Remote Debugging with Azure DevSpaces **(Hands-On)**
 - Additional tools and helpers
 
+:coffee: break
+
+#### Part 2: _10:30 - 12:00_
+
 Scaling
 
 - Pod Autoscaling
 - Node Autoscaling
 - Custom-Metric Autoscaling **(Hands-On)**
 
-#### Part 2
+:hamburger: :pizza: lunch
+
+#### Part 3: _13:00 - 14:00_
 
 Update strategies
 
@@ -117,13 +125,19 @@ Update strategies
 - Canary releases
 - Strategies for different workloads
 
-#### Part 3
+:coffee: break
+
+#### Part 4: _14:00 - 15:00_
 
 Questions & Answers
+
+:airplane: :taxi: :bullettrain_side:
 
 ---
 
 ## Optional Topics
+
+:watch: :grey_question:
 
 - Storages and Volumes
 - Azure DevOps
