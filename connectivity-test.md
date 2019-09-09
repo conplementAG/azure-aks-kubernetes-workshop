@@ -4,7 +4,10 @@
 git clone https://github.com/conplementAG/azure-kubernetes-workshop.git
 cd azure-kubernetes-workshop
 git checkout -b origin/connectivity-test
-docker build . -t aksws
+
+# Check if cntlm or other cooperate proxy is running
+
+docker build . --build-arg http_proxy=http://host.docker.internal:3128 --build-arg https_proxy=http://host.docker.internal:3128 -t aksws
 
 # Create config.test.env from config.env template
 # Configure azure settings in config.test.env
