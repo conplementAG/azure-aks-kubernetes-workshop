@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: kube-state-metrics
+  namespace: coreops-monitoring-kube-state-metrics
+  labels:
+    k8s-app: kube-state-metrics
+spec:
+  ports:
+  - name: http-metrics
+    port: 8080
+    targetPort: http-metrics
+    protocol: TCP
+  selector:
+    k8s-app: kube-state-metrics

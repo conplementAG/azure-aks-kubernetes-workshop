@@ -1,0 +1,19 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: cadvisor
+  namespace: coreops-monitoring-cadvisor
+  labels:
+    k8s-app: cadvisor
+spec:
+  jobLabel: cadvisor
+  selector:
+    matchLabels:
+      k8s-app: cadvisor
+  namespaceSelector:
+    matchNames:
+    - coreops-monitoring-cadvisor
+  endpoints:
+  - port: http
+    interval: 30s
+    honorLabels: true
