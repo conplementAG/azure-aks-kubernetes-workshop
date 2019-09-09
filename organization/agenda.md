@@ -1,10 +1,10 @@
 # Agenda
 
-**Status: Preliminary**
-
 ## DAY 1
 
 #### Part 1
+
+Introduction
 
 - Introduction of conplement AG
 - Introduction of participants
@@ -16,27 +16,30 @@
 
 #### Part 2
 
+AKS Basics
+
 - Refreshing Kubernetes Core Concepts
 - Azure and Kubernertes RBAC
-- AKS ops (upgrades etc.)
-- AKS Kubernetes sys internals
+- AKS Operations with Terraform (throughout the course)
+- AKS Kubernetes System Internals
 
 #### Part 3
 
-- Application deployment **(Hands-On)**
-  - kubectl
-  - helm
-  - CNAB
+Application deployment **(Hands-On)**
+
+- kubectl
+- helm
+- CNAB
 
 #### Part 4
 
-- Application configuration **(Hands-On)**
-  - Schedling
-    - basic scheduling and pod lifecycle
-    - self-healing mechanisms
-    - health checks
-    - resource limits
-    - resource quotas
+Application configuration **(Hands-On)**
+
+- Scheduling and pod lifecycle
+- Self-healing mechanisms
+- Health checks
+- Resource limits
+- Resource quotas
 
 ---
 
@@ -44,24 +47,46 @@
 
 #### Part 1
 
-- Recap of DAY 1
-- Networking
-  - Network segmentation
-  - Network policies
-- Application Configuration **(Hands-On)**
-  - secrets
-  - configmaps
-  - connecting Azure KeyVault or external Vaults
+Recap of DAY 1
+
+Networking
+
+- Custom VNET
+- Network segmentation
+- Network policies
 
 #### Part 2
 
-- Service Discovery **(Hands-On)**
-  - Tagging
-  - Load Balancing
-  - Ingress (ingress controller, TLS, DNS)
-  - Egress
+Application Configuration **(Hands-On)**
+
+- Secrets
+- Configmaps
+- Connecting Azure KeyVault or external Vaults
 
 #### Part 3
+
+Service Discovery **(Hands-On)**
+
+- Tagging
+- Load Balancing
+
+#### Part 4
+
+Ingress **(Hands-On)**
+
+- Ingress Controller
+- Cert-Manager
+- External-DNS
+
+Egress
+
+---
+
+## DAY 3
+
+#### Part 1
+
+Recap of Day 2
 
 Advanced Usage
 
@@ -74,29 +99,24 @@ Scaling
 - Node Autoscaling
 - Custom-Metric Autoscaling **(Hands-On)**
 
-#### Part 4
+#### Part 2
 
 Update strategies
 
-- blue green deployment
-- canary releases
-- different workloads
-
----
-
-## DAY 3
-
-#### Part 1
-
-- DevOps
-  - Terraform for Infrastrucure as Code
-
-#### Part 2
-
-- Optional: Azure DevOps
-- Optional: Monitoring with Prometheus
-- Optional: Storages and Volumes
+- Blue green deployment
+- Canary releases
+- Strategies for different workloads
 
 #### Part 3
 
-- Q+A
+Questions & Answers
+
+---
+
+## Optional Topics
+
+- Storages and Volumes
+- Azure DevOps
+- Monitoring with Prometheus
+- Dashboards with Grafana
+- Logging with ElasticSearch
