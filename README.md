@@ -4,11 +4,11 @@ azure-kubernetes-workshop is a workshop documentation with hands-on exercises fo
 
 ## Prerequisits
 
-For more information see [Prerequisits](Prerequisits.md)
+For more information see [Prerequisits](organization/prerequisits.md)
 
 ## Agenda
 
-For more information see [Agenda](Agenda.md)
+For more information see [Agenda](organization/agenda.md)
 
 ## Configure and run main container
 
@@ -19,32 +19,36 @@ docker build . --build-arg http_proxy=http://host.docker.internal:3128 --build-a
 ```
 
 ### Build main container without proxy
+
 ```bash
 docker build . -t aksws
 ```
 
-* Create and configure a local `config.env` file by copying the `config.env.template`
+- Create and configure a local `config.env` file by copying the `config.env.template`
 
-* Run the just built container as follows
+- Run the just built container as follows
+
 ```bash
-docker run -it --rm -v %cd%:/usr/src/app --env-file config.env aksws 
+docker run -it --rm -v %cd%:/usr/src/app --env-file config.env aksws
 ```
 
 ## Create Infrastructre
 
-* Login to Azure
-From inside the container you have to be logged in to Azure either by executing the `azlogin.sh` script or by directly running `az login` correctly parameterized 
+- Login to Azure
+  From inside the container you have to be logged in to Azure either by executing the `azlogin.sh` script or by directly running `az login` correctly parameterized
 
-* Create the [Infrastructure with Terraform](terraform/README.md)
+- Create the [Infrastructure with Terraform](terraform/README.md)
 
 ### Login to AKS
 
-* Login to the aks cluster with `az aks get-credentials -g aksws-weu-$ENVTAG-rg -n aksws-weu-$ENVTAG-aks --overwrite-existing`
+- Login to the aks cluster with `az aks get-credentials -g aksws-weu-$ENVTAG-rg -n aksws-weu-$ENVTAG-aks --overwrite-existing`
 
 ## Application Deployment with Helm
+
 For more information see [Helm](helm/README.md)
 
 ## Application Deployment with CNAB
+
 For more information see [CNAB](cnab/README.md)
 
 ## Application configuration

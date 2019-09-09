@@ -1,17 +1,10 @@
-# Agenda
-
-## DAY 1
-
-### Introduction of participants (30 min)
+# Introduction
 
 ### Prepare for the following questions (5 min)
 
 - Who is currently using K8s in production?
 - Who has experience with basic kubernetes concepts (deployment, pod, etc.)?
 - Who was already using Helm for K8s deployments?
-- ...
-
-## DAY 3
 
 ### Expectations and Problems
 
