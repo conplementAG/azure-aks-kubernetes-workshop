@@ -1,5 +1,15 @@
 # Agenda
 
+Example schedule per day:
+
+- 09:00 - 10:15 Part 1
+- :coffee: break
+- 10:30 - 12:00 Part 2
+- :hamburger: :pizza: lunch
+- 13:00 - 14:45 Part 3
+- :coffee: break
+- 15:00 - 16:45 Part 4
+
 ## DAY 1
 
 #### Part 1
