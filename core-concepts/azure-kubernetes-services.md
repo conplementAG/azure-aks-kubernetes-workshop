@@ -6,8 +6,8 @@ Managed kubernetes from Azure comes with some additional components, which will 
 
 The base for kubernetes on Azure is aks-engine, which is based on acs-engine:
 
-* https://github.com/Azure/aks-engine
-* https://github.com/Azure/aks-engine/tree/master/parts/k8s
+- https://github.com/Azure/aks-engine
+- https://github.com/Azure/aks-engine/tree/master/parts/k8s
 
 ## Special System-Pods in AKS deployment
 
@@ -67,7 +67,7 @@ Metrics Server is a cluster-wide aggregator of resource usage data. Runs on a si
 
 See https://github.com/Azure/acs-engine/blob/master/docs/kubernetes/monitoring.md
 
-### The MC_ resource group
+## The MC\_ resource group
 
 Each AKS deployment spans two resource groups:
 
@@ -81,3 +81,32 @@ Get the name of the MC-group programmatically:
 az aks show --resource-group <resource-group> --name <cluster-name> --query nodeResourceGroup
 ```
 
+## AKS Upgrades
+
+### OS Updates
+
+Patches are automatically applied to the VMs of the AKS cluster. Some Updates require a reboot of the VMs to apply - **this reboot will not be done automatically**.
+If a reboot is required the following file will be created: `/var/run/reboot-required`
+
+#### KURED
+
+You can use [Kured (KUbernetes REboot Deamon) DeamonSet](https://github.com/weaveworks/kured) to automate the reboot step, see: https://docs.microsoft.com/en-us/azure/aks/node-updates-kured
+
+### Cluster Version Upgrades
+
+#### Check for updates manually
+
+```
+az aks get-upgrades --resource-group myResourceGroup --name myAKSCluster --output table
+```
+
+#### Subscribe to updates
+
+To automtically be notified when new AKS Updates are available, you can subscribe to release-updates the [Azure/AKS on github.com](https://github.com/Azure/AKS):
+![Watch AKS Github Project](k8s-github-watch-releases.jpg)
+
+#### Install an update (this will take a few minutes):
+
+```
+az aks upgrade --resource-group myResourceGroup --name myAKSCluster --kubernetes-version 1.13.10
+```
