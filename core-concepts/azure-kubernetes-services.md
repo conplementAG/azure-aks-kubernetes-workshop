@@ -66,3 +66,18 @@ Metrics Server is a cluster-wide aggregator of resource usage data. Runs on a si
 ### General Monitoring overview in acs-engine (AKS)
 
 See https://github.com/Azure/acs-engine/blob/master/docs/kubernetes/monitoring.md
+
+### The MC_ resource group
+
+Each AKS deployment spans two resource groups:
+
+You create the first resource group. This group contains only the Kubernetes service resource. The AKS resource provider automatically creates the second resource group during deployment. An example of the second resource group is `MC_myResourceGroup_myAKSCluster_eastus`.
+
+The second resource group, such as `MC_myResourceGroup_myAKSCluster_eastus`, contains all of the infrastructure resources associated with the cluster. These resources include the Kubernetes node VMs, virtual networking, and storage. The purpose of this resource group is to simplify resource cleanup.
+
+Get the name of the MC-group programmatically:
+
+```bash
+az aks show --resource-group <resource-group> --name <cluster-name> --query nodeResourceGroup
+```
+
