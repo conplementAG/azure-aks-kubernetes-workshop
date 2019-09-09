@@ -100,6 +100,8 @@ You can use [Kured (KUbernetes REboot Deamon) DeamonSet](https://github.com/weav
 az aks get-upgrades --resource-group myResourceGroup --name myAKSCluster --output table
 ```
 
+See also [supported Kubernetes Versions](https://docs.microsoft.com/en-us/azure/aks/supported-kubernetes-versions).
+
 #### Subscribe to updates
 
 To automtically be notified when new AKS Updates are available, you can subscribe to release-updates the [Azure/AKS on github.com](https://github.com/Azure/AKS):
