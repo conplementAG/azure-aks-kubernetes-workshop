@@ -3,7 +3,7 @@
 TERRAFORM_STORAGE_NAME=akswsstorage$ENVTAG
 TERRAFORM_RG_NAME=aksws-$SHORT_REGION-$ENVTAG-rg
 
-. ../azlogin.sh
+. ../02-getting-started/azlogin.sh
 
 echo 'Create resource group'
 az group create -n $TERRAFORM_RG_NAME -l $LOCATION

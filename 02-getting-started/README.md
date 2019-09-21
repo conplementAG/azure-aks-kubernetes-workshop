@@ -31,8 +31,10 @@ docker run -it --rm -v %cd%:/usr/src/app --env-file config.env aksws
 Make sure you can authenticate towards your cooprate proxy via a local proxy (cntlm etc.) over port 3128.
 
 ```bash
-docker run -it --rm -v %cd%:/usr/src/app --env HTTP_PROXY=http://docker.for.win.localhost:3128 --env HTTPS_PROXY=http://docker.for.win.localhost:3128 --env-file ./config.env aksws
+docker run -it --rm -v %cd%\..\:/usr/src/app --env HTTP_PROXY=http://docker.for.win.localhost:3128 --env HTTPS_PROXY=http://docker.for.win.localhost:3128 --env-file ./config.env aksws
 ```
+
+Use `$(pwd)/../` instead of `%cd%\..\` on unix systems.
 
 ## Create Infrastructre
 
