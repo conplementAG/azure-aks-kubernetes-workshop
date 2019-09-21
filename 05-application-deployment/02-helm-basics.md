@@ -12,7 +12,7 @@ When using helm over k8s, then it is not suggested to do manual changes on the k
 
 ### Initialize Helm Tiller with RBAC
 
-- Login to azure and login to the aks cluster [see also](../README.md)
+- Login to azure and login to the aks cluster [see also](../02-getting-started/README.md)
 - Inspect and deploy the service account with `kubectl apply -f resources/helm-rbac.yaml`
 - Install Tiller with `helm init --service-account tiller --wait --upgrade`
 
@@ -23,8 +23,11 @@ When using helm over k8s, then it is not suggested to do manual changes on the k
 - `helm create test`
 - `helm install --dry-run --debug --name myrelease ./test`
 - Leave the `--dry-run --debug` options away to actually execute the command
-- Similarly you can also use `helm template ./test --set ingress.enabled=true`
-- `helm ls`
+- check out the created resources with `kubectl get pods`, `kubectl get deployments` and `kubectl get svc`
+- create a port-forward using the podname `kubectl port-forward myrelease-test-... 8080:80`
+- press `CTRL+Z` and enter `bg` and `curl 127.0.0.1:8080` to see the nginx response
+- Similarly you can also use `helm template ./test --set ingress.enabled=true` to check out how the template would look like with the given value
+- use `helm ls` to list up the installed releases
 
 2. Upgrade to LoadBalancer
 
