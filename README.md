@@ -52,7 +52,7 @@ Infrastructure Deployment
 - [Helm Basics](05-application-deployment/02-helm-basics.md) **(Hands-On)** (**Tamas**)
 - [Helm Example](05-application-deployment/03-helm-example.md) (**Peter**)
 - [Helm 3 Preview](05-application-deployment/04-helm3-preview.md) (**Tamas**)
-- [Introduction to CNAB](05-application-deployment/05.cnab.md) (**Tamas**)
+- [Introduction to CNAB](05-application-deployment/05-cnab.md) (**Tamas**)
 
 :coffee: break
 
