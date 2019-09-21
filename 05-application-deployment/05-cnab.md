@@ -8,7 +8,7 @@
 
 The [CNAB](https://cnab.io/) is a name of a package format and also a name for an actual package (bundle).
 
-There are multiple CNAB clients out there, e.g.: [duffle](https://duffle.sh/) or [docker app](https://github.com/docker/app)
+There are multiple CNAB clients out there, e.g.: [duffle](https://duffle.sh/), [porter](https://porter.sh/) or [docker app](https://github.com/docker/app)
 
 ### First steps
 
