@@ -16,6 +16,6 @@ Operations regarding the deployed application, such as deploying new releases, e
 
 ### References
 
-- [Infrastructure Ops](01-infrastructure-ops.md)
-- [Disaster Recovery](02-disaster-recovery.md)
-- [Application Ops](03-application-ops.md)
+- [Infrastructure Ops](06-infrastructure-ops.md)
+- [Disaster Recovery](07-disaster-recovery.md)
+- [Application Ops](08-ops-best-practices.md)

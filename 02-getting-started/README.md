@@ -46,11 +46,3 @@ Use `$(pwd)/../` instead of `%cd%\..\` on unix systems.
 ### Login to AKS
 
 - Login to the aks cluster with `az aks get-credentials -g aksws-weu-$ENVTAG-rg -n aksws-weu-$ENVTAG-aks --overwrite-existing`
-
-## Application Deployment
-
-For more information see [Application Deployment](../05-application-deployment/README.md)
-
-## Application Configuration
-
-For more information see [Application Configuration](../10-application-configuration/README.md)
