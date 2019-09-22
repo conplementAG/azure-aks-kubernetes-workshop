@@ -1,9 +1,11 @@
+locals {
+  pod_identity_name = "aksws-${var.short_region}-${var.env_tag}-podid"
+}
 
 resource "azurerm_user_assigned_identity" "aad_pod_identity" {
   resource_group_name               = "${local.resource_group_name}"
   location                          = "${var.long_region}"
-
-  name = "aadpodidentity"
+  name                              = "${local.pod_identity_name}"
 
   tags {
     Environment = "${var.env_tag}"

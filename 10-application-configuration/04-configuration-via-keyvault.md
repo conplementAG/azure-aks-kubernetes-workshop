@@ -11,6 +11,7 @@ Inspect the contents of the [keyvault.tf](../04-infrastructure-deployment/keyvau
 ```bash
 kubectl create -f https://raw.githubusercontent.com/Azure/kubernetes-keyvault-flexvol/master/deployment/kv-flexvol-installer.yaml
 ```
+
 The command creates a [DaemonSet](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/), which ensures that all (or some) Nodes run a copy of a Pod.
 
 - Create a secret containing the Service Principal Credentials to read from the Azure Key Vault
@@ -50,6 +51,16 @@ kubectl apply -f https://raw.githubusercontent.com/Azure/aad-pod-identity/master
 az identity list -g aksws-weu-$ENVTAG-rg
 ```
 
+- Assign rights to the identity to read from the key vault
+
+```bash
+# set policy to access keys in your Key Vault
+az keyvault set-policy -n aksws-weu-$ENVTAG-kv --key-permissions get --spn <YOUR AZURE USER IDENTITY CLIENT ID>
+# set policy to access secrets in your Key Vault
+az keyvault set-policy -n aksws-weu-$ENVTAG-kv --secret-permissions get --spn <YOUR AZURE USER IDENTITY CLIENT ID>
+# set policy to access certs in your Key Vault
+az keyvault set-policy -n aksws-weu-$ENVTAG-kv --certificate-permissions get --spn <YOUR AZURE USER IDENTITY CLIENT ID>
+```
 - Replace the `<>` parts in the `aadpodidentity.yaml` file with the values of `id` and `clientId` gotten from the `az identity list` command and then apply identity and the binding
 
 ```bash
@@ -69,7 +80,7 @@ NAME                                         AGE
 nginx-flex-kv-podid-default-aadpodidentity   20m
 ```
 
-- Validate the pod can access the secret from Key Vault
+- Validate that the pod can access the secret from Key Vault
 
 ```bash
 kubectl exec -it nginx-flex-kv-podid cat /kvmnt/test-secret

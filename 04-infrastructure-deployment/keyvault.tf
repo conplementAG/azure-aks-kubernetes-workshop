@@ -10,10 +10,7 @@ resource "azurerm_key_vault" "keyvault" {
   resource_group_name         = "${local.resource_group_name}"
   enabled_for_disk_encryption = true
   tenant_id                   = "${var.tenant_id}"
-
-  sku {
-    name = "standard"
-  }
+  sku_name                    = "standard"
 
   access_policy {
     tenant_id = "${var.tenant_id}"
