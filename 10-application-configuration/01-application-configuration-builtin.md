@@ -1,6 +1,7 @@
+# Application Configuration
 ## Preparation
 
-When creating Kubernetes Resources with terraform ([See also](../terraform/README.md)), then you have to assign every member to the group, which will be granted to work with the aks.
+When creating Kubernetes Resources with terraform ([See also](../04-infrastructure-deployment/README.md)), then you have to assign every member to the group, which will be granted to work with the aks.
 
 ## Configuration via application deployment
 
