@@ -138,13 +138,13 @@ Scaling
 
 #### Part 3: _13:00 - 14:00_
 
-Update strategies
+[Update strategies](13-update-strategies/README.md)
 
-- K8s Rolling Update
-- Common Strategies
-  - Blue green deployment (Parallel Deployment, maybe helpful, when different database is used)
-  - Canary releases
-  - Discussion - what do you have in production?
+- [Recreate Strategy](13-update-strategies/01-recreate.md)
+- [Ramped Deployment](13-update-strategies/02-ramped.md)
+- [Blue Green Deployment](13-update-strategies/03-blue-green.md)
+- [Canary Releases](13-update-strategies/04-canary.md)
+- Discussion - what do you have in production?
 
 :coffee: break
 

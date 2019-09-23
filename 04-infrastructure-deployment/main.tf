@@ -4,6 +4,7 @@ locals {
   aks_cluster_sp_name = "aksws-${var.short_region}-${var.env_tag}-aks-service-principal"
   vnet_name = "aksws-${var.short_region}-${var.env_tag}-vnet"
   log_analytics_workspace_name = "aksws-${var.short_region}-${var.env_tag}-lga"
+  acr_name = "aksws${var.short_region}${var.env_tag}acr"
 }
 
 resource "random_uuid" "aks_password" { }
@@ -21,12 +22,6 @@ provider "azurerm" {
   tenant_id       = "${var.tenant_id}"
   # service principal client id & secret will be read from ARM_CLIENT_ID / ARM_CLIENT_SECRET env variables if set, 
   # and in that case service principal auth will be used
-}
-
-resource "azurerm_role_assignment" "acr_pull_role_assignment" {
-  scope                = "${var.acr_id}"
-  role_definition_name = "AcrPull"
-  principal_id         = "${azurerm_azuread_service_principal.cluster_service_principal.id}"
 }
 
 resource "azurerm_azuread_application" "cluster_app_registration" {
@@ -84,12 +79,31 @@ resource "azurerm_log_analytics_workspace" "aks_loganalytics_workspace" {
   }
 }
 
+resource "azurerm_container_registry" "self_contained_container_registry" {
+  count                     = "${var.acr_id == "None" || var.acr_id == "" ? 1 : 0}"
+  name                      = "${local.acr_name}"
+  resource_group_name       = "${local.resource_group_name}"
+  location                  = "${var.long_region}"
+  admin_enabled             = true
+  sku                       = "Basic"
+
+  tags {
+    Environment = "${var.env_tag}"
+  }
+}
+
+resource "azurerm_role_assignment" "acr_pull_role_assignment" {
+  scope                = "${var.acr_id == "None" || var.acr_id == "" ? azurerm_container_registry.self_contained_container_registry.id : var.acr_id}"
+  role_definition_name = "AcrPull"
+  principal_id         = "${azurerm_azuread_service_principal.cluster_service_principal.id}"
+}
+
 resource "azurerm_kubernetes_cluster" "aks_cluster" {
   name                      = "${local.aks_name}"
   location                  = "${var.long_region}"
   resource_group_name       = "${local.resource_group_name}"
   dns_prefix                = "${local.aks_name}"
-  kubernetes_version        = "1.12.7" # az aks get-versions -l westeurope -o table
+  kubernetes_version        = "1.13.10" # az aks get-versions -l westeurope -o table
 
   agent_pool_profile {
     name            = "default"
