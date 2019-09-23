@@ -16,7 +16,7 @@
 - [Introduction of participants](01-introduction/01-questions.md)
 - [Check Prerequisites](01-introduction/02-prerequisites.md)
 - Align Agenda towards participants requirements
-- Introduction to this github repository (**Tamas**)
+- Introduction to this github repository
 - [Setup Tooling for every participant (docker, azure, cli)](02-getting-started/README.md)
 - Decide Team lineup for example work
 
@@ -27,7 +27,7 @@
 [Basic Concepts](03-basic-concepts/README.md)
 
 - [Refreshing Kubernetes Core Concepts](03-basic-concepts/01-kubernetes-core-concepts.md)
-- [Azure and Kubernertes RBAC](03-basic-concepts/02-azure-kubernetes-rbac.md) (**Tamas**)
+- [Azure and Kubernertes RBAC](03-basic-concepts/02-azure-kubernetes-rbac.md)
 - [Kubernetes System Components](03-basic-concepts/03-system-components.md)
 - [AKS Subtleties](03-basic-concepts/04-aks-subtleties.md)
 
@@ -40,7 +40,7 @@ Operations
 
 Infrastructure Deployment
 
-- [Infrastructure Deployment with Terraform](04-infrastructure-deployment/README.md) (**Tamas**) (**Hands On**)
+- [Infrastructure Deployment with Terraform](04-infrastructure-deployment/README.md) (**Hands On**)
 
 :hamburger: :pizza: lunch
 
@@ -49,10 +49,10 @@ Infrastructure Deployment
 [Application deployment](05-application-deployment/README.md)
 
 - [Deployment with kubectl](05-application-deployment/01-kubectl-apply.md)
-- [Helm Basics](05-application-deployment/02-helm-basics.md) **(Hands-On)** (**Tamas**)
-- [Helm Example](05-application-deployment/03-helm-example.md) (**Peter**)
-- [Helm 3 Preview](05-application-deployment/04-helm3-preview.md) (**Tamas**)
-- [Introduction to CNAB](05-application-deployment/05-cnab.md) (**Tamas**)
+- [Helm Basics](05-application-deployment/02-helm-basics.md) **(Hands-On)**
+- [Helm Example](05-application-deployment/03-helm-example.md)
+- [Helm 3 Preview](05-application-deployment/04-helm3-preview.md)
+- [Introduction to CNAB](05-application-deployment/05-cnab.md)
 
 :coffee: break
 
@@ -74,14 +74,24 @@ Infrastructure Deployment
 
 Recap of DAY 1
 
+Application Configuration **(Hands-On)**
+
+- Secrets
+- Configmaps
+- Connecting Azure KeyVault or external Vaults
+
+:coffee: break
+
+#### Part 2: _10:30 - 12:00_
+
 Service Discovery **(Hands-On)**
 
 - Kubernetes Labels
 - Load Balancing
 
-:coffee: break
+:hamburger: :pizza: lunch
 
-#### Part 2: _10:30 - 12:00_
+#### Part 3: _13:00 - 14:30_
 
 Networking
 
@@ -91,7 +101,7 @@ Networking
 
 :coffee: break
 
-#### Part 3: _13:00 - 14:30_
+#### Part 4: _14:45 - 16:45_
 
 Advanced Networking **(Hands-On)**
 
@@ -99,16 +109,6 @@ Advanced Networking **(Hands-On)**
 - Cert-Manager
 - External-DNS
 - Egress
-
-#### Part 4: _14:45 - 16:45_
-
-Application Configuration **(Hands-On)** (**Tamas**)
-
-- Secrets
-- Configmaps
-- Connecting Azure KeyVault or external Vaults
-
-:hamburger: :pizza: lunch
 
 ---
 
