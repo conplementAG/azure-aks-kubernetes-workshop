@@ -22,4 +22,4 @@
   - https://www.telerik.com/fiddler
   - https://sourceforge.net/projects/cntlm/ (deprecated)
 
-* Create a `corporate_certs` folder in the repositorys root-directory and copy the certificates there. If you want to use it behind a corporate proxy, it might be necessary to use the certificates of it.
+* Create a `corporate_certs` folder in the `02-getting-started`-directory and copy the certificates there. If you want to use it behind a corporate proxy, it might be necessary to use the certificates of it.
