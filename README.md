@@ -12,7 +12,7 @@
 
 [Introduction](01-introduction/README.md)
 
-- [Introduction of conplement AG](https://conplement.de)
+- [Introduction of conplement AG](https://www.conplement.de)
 - [Introduction of participants](01-introduction/01-questions.md)
 - [Check Prerequisites](01-introduction/02-prerequisites.md)
 - Align Agenda towards participants requirements
