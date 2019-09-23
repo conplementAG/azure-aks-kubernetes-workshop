@@ -6,9 +6,9 @@
 
 Managed kubernetes from Azure comes with some additional components, which will be described below.
 
-### acs-engine
+### aks-engine
 
-The base for kubernetes on Azure is aks-engine, which is based on acs-engine:
+The base for kubernetes on Azure is the aks-engine (fomerly known as acs-engine)
 
 - https://github.com/Azure/aks-engine
 - https://github.com/Azure/aks-engine/tree/master/parts/k8s
