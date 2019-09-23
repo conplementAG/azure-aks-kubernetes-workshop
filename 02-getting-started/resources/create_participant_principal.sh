@@ -1,0 +1,1 @@
+az ad sp create-for-rbac --role="Owner" --scopes="/subscriptions/${SUBSCRIPTION_ID}" --name "aksws_sp"

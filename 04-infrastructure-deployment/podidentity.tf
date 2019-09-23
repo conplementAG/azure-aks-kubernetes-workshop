@@ -23,5 +23,5 @@ resource "azurerm_role_assignment" "reader_role_assignment" {
   scope                = "${azurerm_key_vault.keyvault.id}"
   role_definition_name = "Reader"
   principal_id         = "${azurerm_user_assigned_identity.aad_pod_identity.principal_id}"
-  depends_on           = ["azurerm_user_assigned_identity.aad_pod_identity"]
+  depends_on           = ["azurerm_user_assigned_identity.aad_pod_identity","azurerm_key_vault.keyvault"]
 }
