@@ -6,7 +6,7 @@
 
 ### Introduction
 
-When using helm over k8s, then it is not suggested to do manual changes on the k8s resources as they are surely not recognized by Helm.
+When deploying using Helm, you should not do manual changes on the deployed resources since Helm only tracks changes done through the Helm CLI!
 
 - https://github.com/helm/helm > Quickstart Guide > Helm Commands
 
