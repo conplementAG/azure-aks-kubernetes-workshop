@@ -4,7 +4,7 @@
 
 ## Creating the infrastructure with Terraform
 
-### 1. Prerequisits
+### 1. Prerequisites
 
 - use the main docker container of this repo
 - use an env file including correct values e.g.: `ARM_CLIENT_ID`, `ARM_CLIENT_SECRET`, etc. see also [here](../README.md)
