@@ -4,7 +4,7 @@ FROM mcr.microsoft.com/azure-cli
 RUN apk update && apk add ca-certificates
 RUN apk add bash unzip
 
-ADD ./corporate_certs/* /usr/local/share/ca-certificates/
+ADD ./azure-kubernetes-workshop/02-getting-started/corporate_certs/* /usr/local/share/ca-certificates/
 RUN chmod 644 /usr/local/share/ca-certificates/* && update-ca-certificates
 
 # libc6 required for some downloaded executable files to work (missing in go compilation for linux systems)
@@ -36,7 +36,7 @@ RUN curl -LO https://git.io/get_helm.sh
 RUN chmod +x get_helm.sh
 RUN ./get_helm.sh
 
-WORKDIR /usr/src/app
+WORKDIR /usr/src/ws
 
 COPY . .
 
