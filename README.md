@@ -14,7 +14,7 @@
 
 - [Introduction of conplement AG](https://conplement.de)
 - [Introduction of participants](01-introduction/01-questions.md)
-- [Check Prerequisits](01-introduction/02-prerequisits.md)
+- [Check Prerequisites](01-introduction/02-prerequisites.md)
 - Align Agenda towards participants requirements
 - Introduction to this github repository (**Tamas**)
 - [Setup Tooling for every participant (docker, azure, cli)](02-getting-started/README.md)
