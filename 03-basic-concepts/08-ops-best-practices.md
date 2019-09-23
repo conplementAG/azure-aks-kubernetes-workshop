@@ -16,7 +16,7 @@
     - Check for kube-advisor
     - Don't use default namespace for production
 - Networking
-  - Kubenet (basic) vs. CNI (Azure CNI) (advanceded)
+  - Kubenet (basic) vs. CNI (Azure CNI) (advanced)
   - Public Service via
   - Internal Load Balancer
 - Maintainace at least 3 month
