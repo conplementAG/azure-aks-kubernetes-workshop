@@ -29,7 +29,7 @@
 - [Refreshing Kubernetes Core Concepts](03-basic-concepts/01-kubernetes-core-concepts.md)
 - [Azure and Kubernertes RBAC](03-basic-concepts/02-azure-kubernetes-rbac.md) (**Tamas**)
 - [Kubernetes System Components](03-basic-concepts/03-system-components.md)
-- [AKS Subtleties](03-basic-concepts/04-aks-subtleties)
+- [AKS Subtleties](03-basic-concepts/04-aks-subtleties.md)
 
 Operations
 
