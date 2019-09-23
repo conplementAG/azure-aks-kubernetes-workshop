@@ -2,7 +2,7 @@
 
 [_Back to overview_](README.md)
 
-## Prerequisits
+## Prerequisites
 
 ### Know-how
 
