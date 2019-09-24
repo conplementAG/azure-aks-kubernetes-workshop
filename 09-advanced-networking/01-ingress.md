@@ -2,4 +2,4 @@
 
 [_Back to overview_](README.md)
 
-## Ingress Controller
+## Ingress
