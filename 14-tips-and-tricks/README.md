@@ -10,6 +10,10 @@ Here is a reference of tips and tricks round about kubernetes
 
 - https://docs.microsoft.com/en-us/azure/aks/tutorial-kubernetes-prepare-app
 
+#### Accessing the k8s dashboard with RBAC enabled
+
+https://docs.microsoft.com/en-us/azure/aks/kubernetes-dashboard#start-the-kubernetes-dashboard
+
 #### Reference Architectures
 
 - https://docs.microsoft.com/de-de/azure/architecture/reference-architectures/microservices/aks
