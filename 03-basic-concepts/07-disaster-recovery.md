@@ -8,7 +8,7 @@ In a complex environment we have to expect failures and errors. Therefore we nee
 
 ### Multi-Regional Cluster
 
-Follows to apporach: _Optimize for mean-time between failures_
+Increase resiliency / follows the apporach: _Optimize for mean-time between failures_
 
 - Plan for AKS clusters in multiple regions.
 - Route traffic across multiple clusters by using Azure Traffic Manager.
@@ -20,9 +20,9 @@ see: https://docs.microsoft.com/en-us/azure/aks/operator-best-practices-multi-re
 
 ### Destroy & Recreate
 
-Follows to apporach: _Optimize for mean-time to repair/recover_
+Follows the apporach: _Optimize for mean-time to repair/recover_ instead mean-time between failures
 
 - Automate everything
 - Execute regularly (for example in CI/CD)
-- Implement idempotent
+- Implement idempotently
 - backup data
