@@ -63,7 +63,7 @@ Infrastructure Deployment
 - [Scheduling internals](06-scheduling/01-scheduling-internals.md)
 - [Self-healing mechanisms](06-scheduling/02-self-healing.md)
 - [Health checks](06-scheduling/03-health-checks.md)
-- [Resource Management](06-scheduling/04-resource-mangement.md)
+- [Resource Management](06-scheduling/04-resource-management.md)
 - [Resource quotas](06-scheduling/05-resource-quotas.md)
 
 ---
