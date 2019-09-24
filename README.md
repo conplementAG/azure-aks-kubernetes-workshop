@@ -86,8 +86,8 @@ Application Configuration **(Hands-On)**
 
 Service Discovery **(Hands-On)**
 
-- Kubernetes Labels
-- Load Balancing
+- DNS & Kubernetes Labels
+- Load balancing and access from outside the cluster
 
 :hamburger: :pizza: lunch
 
@@ -95,8 +95,8 @@ Service Discovery **(Hands-On)**
 
 Networking
 
-- Custom VNET
-- Network segmentation
+- Networking Basics
+- Kubernetes and AKS Networking
 - Network policies
 
 :coffee: break
@@ -109,6 +109,7 @@ Advanced Networking **(Hands-On)**
 - Cert-Manager
 - External-DNS
 - Egress
+- Azure Application Gateway
 
 ---
 
