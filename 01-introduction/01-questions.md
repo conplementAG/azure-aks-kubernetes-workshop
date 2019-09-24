@@ -10,7 +10,9 @@
 - Who has experience with basic kubernetes concepts (deployment, pod, etc.)?
 - Who was already using Helm for K8s deployments?
 
-### Expectations and Problems
+### Expectations
+
+- What are your expectations from the workshop?
 
 ### Resolving current actual problems
 

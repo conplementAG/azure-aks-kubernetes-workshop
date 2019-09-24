@@ -17,14 +17,15 @@
     - Don't use default namespace for production
 - Networking
   - Kubenet (basic) vs. CNI (Azure CNI) (advanced)
-  - Public Service via
+  - Public Serv
+  - ice via
   - Internal Load Balancer
 - Maintainace at least 3 month
   - Security patches applied
   - Kured => Reboot nodes
   - One version at a time
 - Don't expose SSH
-- Use admission controller for container registry validation
+- Use admission controller for container re gistry validation
 - Use image scanning features
 - Don't give root access to containers
 - Use Linux Kernel features:
