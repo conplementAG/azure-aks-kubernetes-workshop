@@ -1,1 +1,0 @@
-- rules should be deployed where the prometheus is deployed because of auto discovery
