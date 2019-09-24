@@ -28,7 +28,7 @@ However, AKS offers another option with a plugin called **Azure CNI**, which is 
 
 ![AKS advanced networking](images/pod-networking-5-aks-advanced-networking.png)
 
-#### 06 - Summary and comparison of both approaches
+#### 06 - Comparison of basic / advanced networking approaches
 
 Here is a quick summary of pros and cons of both approaches:
 
@@ -59,7 +59,29 @@ Pros
   - Peering and On-Premise connectivitiy is out of the box
   - advanced features like virtual nodes or network policies
 
+#### 07 - Services
+
+Let's take a look at ClusterIP service type first:
+
+![Networking / services](images/pod-networking-6-service-routing.png)
+
+Kube proxy has three modes of running:
+- Userspace
+- iptables
+- IPVS
+
+Node Port variation looks like this:
+
+![Node Port](images/pod-networking-7-node-port.png)
+
+Additionally, Load balancer could be added:
+
+![Load balancing](images/pod-networking-8-load-balancing.png)
+
+
+
 ### References
+- https://supergiant.io/blog/understanding-kubernetes-kube-proxy/
 - https://docs.microsoft.com/en-us/azure/aks/configure-kubenet
 - https://docs.microsoft.com/en-us/azure/aks/configure-azure-cni
 - https://docs.microsoft.com/en-us/azure/aks/concepts-network
