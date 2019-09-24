@@ -6,6 +6,8 @@
 
 ### Introduction
 
+Cloud Native Application Bundles (CNAB) are a package format specification that describes a technology for bundling, installing, and managing distributed applications, that are by design, cloud agnostic.
+
 The [CNAB](https://cnab.io/) is a name of a package format and also a name for an actual package (bundle).
 
 There are multiple CNAB clients out there, e.g.: [duffle](https://duffle.sh/), [porter](https://porter.sh/) or [docker app](https://github.com/docker/app)
