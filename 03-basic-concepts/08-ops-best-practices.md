@@ -34,15 +34,22 @@ To manage multiple teams/projects within one cluster, you should consider the fo
 
 ### Security Best Practices
 
+![AppArmor](images/apparmor.png)
+
 - Don't expose SSH to your nodes
 - Use admission controller for container re gistry validation
 - Use image scanning features
 - Don't give root access to containers
 - Use Linux Kernel features:
+
   - AppArmor
-    _To limit the actions that containers can perform, you can use the AppArmor Linux kernel security module. AppArmor is available as part of the underlying AKS node OS, and is enabled by default. _
+
+    _To limit the actions that containers can perform, you can use the AppArmor Linux kernel security module. AppArmor is available as part of the underlying AKS node OS, and is enabled by default._
+
   - Seccomp
+
     _While AppArmor works for any Linux application, seccomp (secure computing) works at the process level. Seccomp is also a Linux kernel security module, and is natively supported by the Docker runtime used by AKS nodes. With seccomp, the process calls that containers can perform are limited._
+
 - Use Pod Level Security
   - use securityContext
 - Always Pull Images (security patches)
