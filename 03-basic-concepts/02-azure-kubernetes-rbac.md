@@ -4,12 +4,12 @@
 
 ## Role Based Access Control
 
-Azure is tightly coupled to Azure Active Directory (AAD), which can be used to mange users, groups, roles etc.
-This huge user-mangement system can be integrated into kubernetes, so that you can use your Active Directory Principals as Technical Users within Kubernetes and assign them privledges based on namespace, resource-types or based on other metrics.
+Role-based access control (RBAC) is a method of regulating access to computer or network resources based on the roles of individual users within an enterprise. [See also the Kubernetes Reference](https://kubernetes.io/docs/reference/access-authn-authz/rbac/).
 
 ### Azure AAD Integration
 
-The security of AKS clusters can be enhanced with the integration of AAD.
+The security of AKS clusters can be enhanced with the integration of AAD. In this case Azure is tightly coupled to Azure Active Directory (AAD), which can be used to mange users, groups, roles etc.
+This huge user-mangement system can be integrated into kubernetes, so that you can use your Active Directory Principals as Technical Users within Kubernetes and assign them privledges based on namespace, resource-types or based on other metrics.
 
 ![AKS AAD Integration](images/aad-integration.png "AKS AAD Integration")
 
