@@ -1,6 +1,8 @@
-# Tools
+# Additional Tools
 
-## kubectl Plugins
+[_Back to overview_](README.md)
+
+## Kubectl Plugins
 
 kubectl can be extended by adding a custom executable named `kubectl-xyz` into the `$PATH`. kubectl will then delegate all call to `kubectl xyz` to the `kubectl-xyz` executable.
 

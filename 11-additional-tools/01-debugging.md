@@ -1,4 +1,6 @@
-# Advanced Tools
+# Additional Tools
+
+[_Back to overview_](README.md)
 
 ## Debugging with Azure Dev Spaces
 
@@ -12,9 +14,13 @@ For live debugging your Kubernetes app, Azure provides Azure Dev Spaces, which i
 
 ![Azure Dev Spaces VSCode Extension](images/azure-dev-spaces-extension.png)
 
-2. Enable Azure Dev Spaces Feature in your cluster via Azure Portal
+2. Enable Azure Dev Spaces Feature in your cluster via Azure Portal or Azure CLI
 
 ![Azure Dev Spaces VSCode Extension](images/portal-ads-enabled.png)
+
+```bash
+azds use -g <resource-group> -n <cluster-name>
+```
 
 3. Install Azure Dev Spaces CLI on your client OS
 
@@ -24,7 +30,11 @@ https://docs.microsoft.com/en-us/azure/dev-spaces/troubleshooting#error-required
 
 ![Azure Dev Spaces VSCode Extension](images/azure-dev-spaces-prepare.png)
 
-- Cross Service Debugging
+5. Remove Azure Dev Spaces
+
+```bash
+azds remove -g <resource-group> -n <cluster-name>
+```
 
 ### Usage Discussion
 
