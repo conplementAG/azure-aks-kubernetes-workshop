@@ -4,19 +4,18 @@
 
 ## Role Based Access Control
 
-Azure is tightly coupled to Active Directory, which can be used to mange users, groups, roles etc.
+Azure is tightly coupled to Azure Active Directory (AAD), which can be used to mange users, groups, roles etc.
 This huge user-mangement system can be integrated into kubernetes, so that you can use your Active Directory Principals as Technical Users within Kubernetes and assign them privledges based on namespace, resource-types or based on other metrics.
 
 ### Azure AAD Integration
 
-https://docs.microsoft.com/de-de/azure/aks/operator-best-practices-identity#use-azure-active-directory
-https://docs.microsoft.com/de-de/azure/aks/azure-ad-integration
+The security of AKS clusters can be enhanced with the integration of AAD.
 
-### Tutorial
+![AKS AAD Integration](images/aad-integration.png "AKS AAD Integration")
 
-This [tutorial](https://docs.microsoft.com/de-de/azure/aks/azure-ad-rbac) explains how RBAC with kubernetes actually works.
+### Creating the Server and Client Applications
 
-### Example Script
+The script below automates the creation and the consenting of the server and client applications used for the AAD integration.
 
 ```bash
 #!/bin/sh
@@ -64,3 +63,15 @@ oAuthPermissionId=$(az ad app show --id $serverApplicationId --query "oauth2Perm
 az ad app permission add --id $clientApplicationId --api $serverApplicationId --api-permissions $oAuthPermissionId=Scope
 az ad app permission grant --id $clientApplicationId --api $serverApplicationId
 ```
+## The users and principals
+
+The diagram below shows how all the users and principals play together.
+![AKS Terraform RBAC](images/aks-terraform-rbac.png "AKS Terraform RBAC")
+
+## Read further
+
+This [tutorial](https://docs.microsoft.com/de-de/azure/aks/azure-ad-rbac) explains how RBAC with kubernetes actually works.
+
+https://docs.microsoft.com/de-de/azure/aks/operator-best-practices-identity#use-azure-active-directory
+
+https://docs.microsoft.com/de-de/azure/aks/azure-ad-integration
