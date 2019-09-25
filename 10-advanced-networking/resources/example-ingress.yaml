@@ -6,14 +6,13 @@ metadata:
     kubernetes.io/ingress.class: nginx
     certmanager.k8s.io/cluster-issuer: "letsencrypt-prod"
     certmanager.k8s.io/acme-challenge-type: http01
-    nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
   tls:
     - hosts:
         - app.<< your tag >>.conplement.cloud 
       secretName: frontend-ingress-tls-secret # Secret name should be unique within a namespace (will be created for you)
   rules:
-    - host: app.<< your tag>>.conplement.cloud
+    - host: app.<< your tag >>.conplement.cloud
       http:
         paths:
           - path: /
