@@ -10,3 +10,4 @@ _In Kubernetes, scheduling refers to making sure that Pods are matched to Nodes 
 - [Health checks](03-health-checks.md)
 - [Resource limits](04-resource-management.md)
 - [Resource quotas](05-resource-quotas.md)
+- [**Hands-On** with example application](06-resource-management-example.md)

@@ -4,6 +4,8 @@
 
 ## Resource Quotas
 
+_Aggregates the total usage within one namespace_
+
 Enfore Requests and Limits for Pods within a namespace.
 
 - `limits.cpu`: Across all pods in a non-terminal state, the sum of CPU limits cannot exceed this value.
@@ -82,6 +84,33 @@ spec:
           memory: "10Gi"
           cpu: "500m"
   priorityClassName: high
+```
+
+## Limit Range
+
+LimitRange ensures resource usage per pod/container level.
+Also defines default values, if not explicitly specified in the deployment.
+
+```yaml
+apiVersion: v1
+kind: LimitRange
+metadata:
+  name: limit-mem-cpu-per-pod
+spec:
+  limits:
+    - max:
+        cpu: "800m"
+        memory: "1Gi"
+      min:
+        cpu: "100m"
+        memory: "99Mi"
+      default:
+        cpu: "700m"
+        memory: "900Mi"
+      defaultRequest:
+        cpu: "110m"
+        memory: "111Mi"
+      type: Pod
 ```
 
 ## References
