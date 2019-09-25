@@ -74,42 +74,43 @@ Infrastructure Deployment
 
 Recap of DAY 1
 
-Application Configuration **(Hands-On)**
+[Application Configuration](07-application-configuration/README.md) **(Hands-On)**
 
-- Secrets
-- Configmaps
-- Connecting Azure KeyVault or external Vaults
+- [Application Configuration with Config Maps and Secrets](07-application-configuration/01-application-configuration-builtin.md)
+- [Application Configuration with Terraform](07-application-configuration/02-application-configuration-terraform.md)
+- [Key Rotation](07-application-configuration/03-key-rotation.md)
+- [Azure Key Vault](07-application-configuration/04-configuration-via-keyvault.md)
+- [Pod Identity](07-application-configuration/05-pod-identity.md)
+- [Azure Key Vault with Pod Identity](07-application-configuration/06-keyvault-with-podidentity.md)
 
 :coffee: break
 
 #### Part 2: _10:30 - 12:00_
 
-Service Discovery **(Hands-On)**
+[Service Discovery](08-service-discovery/README.md) **(Hands-On)**
 
-- DNS & Kubernetes Labels
-- Load balancing and access from outside the cluster
+- [DNS & Kubernetes Labels](08-service-discovery/README.md)
+- [Load balancing and access from outside the cluster](08-service-discovery/README.md)
 
 :hamburger: :pizza: lunch
 
 #### Part 3: _13:00 - 14:30_
 
-Networking
+[Networking](09-networking/README.md)
 
-- Networking Basics
-- Kubernetes and AKS Networking
-- Network policies
+- [Networking Basics](09-networking/01-networking-basics.md)
+- [Kubernetes and AKS Networking](09-networking/02-kubernetes-and-aks-networking.md)
+- [Network Policies](09-networking/03-network-policies.md)
 
 :coffee: break
 
 #### Part 4: _14:45 - 16:45_
 
-Advanced Networking **(Hands-On)**
+[Advanced Networking](10-advanced-networking/README.md)
 
-- Ingress Controller
-- Cert-Manager
-- External-DNS
-- Egress
-- Azure Application Gateway
+- [Ingress](10-advanced-networking/01-ingress.md) (**Hands-On**)
+- [Egress](10-advanced-networking/02-egress.md)
+- [Session Affinity](10-advanced-networking/03-session-affinity.md)
 
 ---
 
@@ -119,21 +120,24 @@ Advanced Networking **(Hands-On)**
 
 Recap of Day 2
 
-Additional Tools
+[Additional Tools](11-additional-tools/README.md)
 
-- Remote Debugging with Azure DevSpaces **(Hands-On)**
-- CLI Tools
-- UI Tools (Dashboard - check outofthebox status)
+- [Debugging with Azure Dev Spaces](11-additional-tools/01-debugging.md)
+- [Shell](11-additional-tools/02-cmd-pimping.md)
+- [Kubectl Plugins](11-additional-tools/03-kubectl-plugins.md)
+- UI Tools (Builtin Dashboard)
 
 :coffee: break
 
 #### Part 2: _10:30 - 12:00_
 
-Scaling
+[Scaling](12-autoscaling/README.md)
 
-- Node Autoscaling
-- Pod Autoscaling **(Hands-On)**
-- Custom-Metric Autoscaling **(Hands-On)**
+- [Node Autoscaling](12-autoscaling/01-node-autoscaling.md) (**Hands-On**)
+- [Virtual Nodes](12-autoscaling/02-virtual-node-scaling.md)
+- [Pod Autoscaling](12-autoscaling/03-pod-autoscaling.md) (**Hands-On**)
+- [Custom Metric Autoscaling](12-autoscaling/04-custom-metric-scaling/custom-metric-autoscaling.md)
+- [Node Pools](12-autoscaling/05-node-pools.md)
 
 :hamburger: :pizza: lunch
 
