@@ -10,10 +10,10 @@ metadata:
 spec:
   tls:
     - hosts:
-        - app.aksws.conplement.cloud
+        - app.<< your tag >>.conplement.cloud 
       secretName: letsencrypt-staging-secret # Secret name should be unique within a namespace (will be created for you)
   rules:
-    - host: app.aksws.conplement.cloud
+    - host: app.<< your tag>>.conplement.cloud
       http:
         paths:
           - path: /

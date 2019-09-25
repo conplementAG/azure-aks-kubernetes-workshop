@@ -7,7 +7,7 @@ locals {
 # DNS Zone
 
 resource "azurerm_dns_zone" "dnszone" {
-  name                = "aksws.conplement.cloud"
+  name                = "aksws.conplement.cloud" # change aksws to your env-tag! TODO: replace with variable
   resource_group_name = "${local.resource_group_name}"
   zone_type           = "Public"
 }

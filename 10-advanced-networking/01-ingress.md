@@ -6,12 +6,25 @@
 
 First, here is an overview of routing traffic from ouside of the cluster:
 
-![Ingress - outside](images/pod-networking-9-ingress-1.png)
+![Ingress - external](images/pod-networking-9-ingress-1.png)
 
 Now let's take a look at the components handling ingress resources inside the cluster:
 
+![Ingress - internal](images/pod-networking-9-ingress-2.png)
+
+## Hands-on
+
 First you have to ensure that you create a DNS-Zone along with your cluster (you can also use an existing one).
 This is automatically done when using the terraform templates of this workshop.
+
+Also make sure that all other ingress controllers are removed from the cluster before proceeding further with the steps here.
+
+```bash
+helm list
+helm delete --purge <your ingress controller release>
+kubectl get ingress
+kubectl delete ingress <your ingress>
+```
 
 Afterwards you have to add the following three components:
 
@@ -25,7 +38,7 @@ Afterwards you have to add the following three components:
 helm repo add jetstack https://charts.jetstack.io
 
 # Add the ingress-controller to the cluster
-helm upgrade --install ingress-controller stable/nginx-ingress --set rbac.create=true --set controller.ingressClass=nginx --set serviceAccount.create=true --set controller.extraArgs.v=2
+helm upgrade --install ingress-controller stable/nginx-ingress --set rbac.create=true --set controller.ingressClass=nginx --set controller.publishService.enabled=true --set serviceAccount.create=true --set controller.extraArgs.v=2
 
 # Add External DNS to the cluster
 helm upgrade --install external-dns stable/external-dns --set azure.secretName=azure-config-file --set logLevel=debug --set provider=azure --set rbac.create=true
