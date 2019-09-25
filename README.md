@@ -31,6 +31,10 @@
 - [Kubernetes System Components](03-basic-concepts/03-system-components.md)
 - [AKS Subtleties](03-basic-concepts/04-aks-subtleties.md)
 
+:hamburger: :pizza: lunch
+
+#### Part 3: _13:15 - 14:45_
+
 Operations
 
 - [Infrastructure Operations vs. Application Operations](03-basic-concepts/05-infrastructure-vs-app-ops.md)
@@ -42,9 +46,9 @@ Infrastructure Deployment
 
 - [Infrastructure Deployment with Terraform](04-infrastructure-deployment/README.md) (**Hands On**)
 
-:hamburger: :pizza: lunch
+:coffee: break
 
-#### Part 3: _13:15 - 14:45_
+#### Part 4: _15:00 - 17:00_
 
 [Application deployment](05-application-deployment/README.md)
 
@@ -54,9 +58,13 @@ Infrastructure Deployment
 - [Helm 3 Preview](05-application-deployment/04-helm3-preview.md)
 - [Introduction to CNAB](05-application-deployment/05-cnab.md)
 
-:coffee: break
+---
 
-#### Part 4: _15:00 - 16:45_
+## DAY 2
+
+#### Part 1: _09:00 - 10:15_
+
+Recap of DAY 1
 
 [Scheduling](06-scheduling/README.md) **(Hands-On)**
 
@@ -66,13 +74,9 @@ Infrastructure Deployment
 - [Resource Management](06-scheduling/04-resource-management.md)
 - [Resource quotas](06-scheduling/05-resource-quotas.md)
 
----
+:coffee: break
 
-## DAY 2
-
-#### Part 1: _09:00 - 10:15_
-
-Recap of DAY 1
+#### Part 2: _10:30 - 12:00_
 
 [Application Configuration](07-application-configuration/README.md) **(Hands-On)**
 
@@ -83,18 +87,14 @@ Recap of DAY 1
 - [Pod Identity](07-application-configuration/05-pod-identity.md)
 - [Azure Key Vault with Pod Identity](07-application-configuration/06-keyvault-with-podidentity.md)
 
-:coffee: break
+:hamburger: :pizza: lunch
 
-#### Part 2: _10:30 - 12:00_
+#### Part 3: _13:00 - 14:30_
 
 [Service Discovery](08-service-discovery/README.md) **(Hands-On)**
 
 - [DNS & Kubernetes Labels](08-service-discovery/README.md)
 - [Load balancing and access from outside the cluster](08-service-discovery/README.md)
-
-:hamburger: :pizza: lunch
-
-#### Part 3: _13:00 - 14:30_
 
 [Networking](09-networking/README.md)
 
@@ -104,7 +104,7 @@ Recap of DAY 1
 
 :coffee: break
 
-#### Part 4: _14:45 - 16:45_
+#### Part 4: _14:45 - 17:00_
 
 [Advanced Networking](10-advanced-networking/README.md)
 
@@ -156,17 +156,19 @@ Recap of Day 2
 #### Part 4: _14:00 - 15:00_
 
 Questions & Answers
+Feedback
 
 :airplane: :taxi: :bullettrain_side:
 
 ---
 
-## Optional Topics
+## Optional Topics for seperate workshops
 
 :watch: :grey_question:
 
 - Storages and Volumes
-- Azure DevOps
+- CICD with Azure DevOps
 - Monitoring with Prometheus
-- Dashboards with Grafana
 - Logging with ElasticSearch
+- Dashboards with Grafana
+- Security Hardening
