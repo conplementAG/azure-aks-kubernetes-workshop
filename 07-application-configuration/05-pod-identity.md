@@ -16,7 +16,7 @@ It is generally a best practice to use Azure Active Directory integration with A
 - [Key Vault](https://github.com/Azure/kubernetes-keyvault-flexvol#option-2-pod-identity)
 - Cosmos DB
 - Blob Storage
-- `Experimental` [Application Gateway Kubernetes Ingress](https://github.com/Azure/application-gateway-kubernetes-ingress)
+- [Application Gateway Kubernetes Ingress](https://github.com/Azure/application-gateway-kubernetes-ingress)
 
 ## Further Readings
 
