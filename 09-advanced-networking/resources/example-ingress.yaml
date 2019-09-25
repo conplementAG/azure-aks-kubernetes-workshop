@@ -2,16 +2,16 @@ apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
   name: frontend-public-ingress
-  namespace: default # your namespace name, should match the helm namespace where aks-helloworld was installed via helm!
   annotations:
     kubernetes.io/ingress.class: nginx
-    certmanager.k8s.io/cluster-issuer: "letsencrypt-staging" # TLS is supported
+    certmanager.k8s.io/cluster-issuer: "letsencrypt-staging"
     certmanager.k8s.io/acme-challenge-type: http01
+    nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
   tls:
     - hosts:
         - app.aksws.conplement.cloud
-      secretName: app-aksws-conplement-cloud-secret # Secret name should be unique within a namespace (will be created for you)
+      secretName: letsencrypt-staging-secret # Secret name should be unique within a namespace (will be created for you)
   rules:
     - host: app.aksws.conplement.cloud
       http:

@@ -85,5 +85,5 @@ kubectl apply -f resources/issuers
 Now you are ready to install an ingress-definition which will make use of what we've setup before:
 
 ```bash
- kubectl apply -f resources/example-ingress.yaml
+kubectl apply -f resources/example-ingress.yaml
 ```
