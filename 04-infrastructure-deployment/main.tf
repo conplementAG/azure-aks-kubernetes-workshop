@@ -34,6 +34,8 @@ resource "azurerm_azuread_application" "cluster_app_registration" {
 
 resource "azurerm_azuread_service_principal" "cluster_service_principal" {
   application_id = "${azurerm_azuread_application.cluster_app_registration.application_id}"
+
+  depends_on = ["azurerm_azuread_application.cluster_app_registration"]
 }
 
 resource "azurerm_azuread_service_principal_password" "cluster_service_principal_password" {
@@ -145,10 +147,16 @@ resource "azurerm_kubernetes_cluster" "aks_cluster" {
   tags {
     Environment = "${var.env_tag}"
   }
+
+  depends_on = ["azurerm_azuread_application.cluster_app_registration", "azurerm_azuread_service_principal_password.cluster_service_principal_password"]
 }
 
 resource "azurerm_role_assignment" "network_contributor_role_assignment" {
   scope                = "${azurerm_virtual_network.main_vnet.id}"
   role_definition_name = "Network Contributor"
   principal_id         = "${azurerm_azuread_service_principal.cluster_service_principal.id}"
+}
+
+output "Credentials" {
+  value = "${azurerm_azuread_service_principal.cluster_service_principal.id}"
 }
