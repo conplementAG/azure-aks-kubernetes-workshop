@@ -6,6 +6,7 @@
 - [Ramped Deployments](02-ramped.md)
 - [Blue/Green Deployment](03-blue-green.md)
 - [Canary Releases](04-canary.md)
+- Discussion - what do you have in production?
 
 ### References
 
