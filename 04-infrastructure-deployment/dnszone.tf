@@ -24,7 +24,7 @@ data "azurerm_resource_group" "resource-group" {
   name = local.resource_group_name
 }
 
-resource "azurerm_azuread_application" "external-dns-app" {
+resource "azuread_application" "external-dns-app" {
   name                       = local.external_dns_sp_name
   homepage                   = "https://${local.external_dns_sp_name}"
   identifier_uris            = ["https://${local.external_dns_sp_name}"]
@@ -32,12 +32,12 @@ resource "azurerm_azuread_application" "external-dns-app" {
   available_to_other_tenants = false
 }
 
-resource "azurerm_azuread_service_principal" "external-dns-sp" {
-  application_id = azurerm_azuread_application.external-dns-app.application_id
+resource "azuread_service_principal" "external-dns-sp" {
+  application_id = azuread_application.external-dns-app.application_id
 }
 
-resource "azurerm_azuread_service_principal_password" "external-dns-sp-password" {
-  service_principal_id = azurerm_azuread_service_principal.external-dns-sp.id
+resource "azuread_service_principal_password" "external-dns-sp-password" {
+  service_principal_id = azuread_service_principal.external-dns-sp.id
   value                = random_uuid.external-dns-sp-password.result
   end_date             = timeadd(timestamp(), "8760h") # 1 year = 365 * 24 hours
 }
@@ -45,13 +45,13 @@ resource "azurerm_azuread_service_principal_password" "external-dns-sp-password"
 resource "azurerm_role_assignment" "external-dns-sp-rg-reader" {
   scope                = data.azurerm_resource_group.resource-group.id
   role_definition_name = "Reader"
-  principal_id         = azurerm_azuread_service_principal.external-dns-sp.id
+  principal_id         = azuread_service_principal.external-dns-sp.id
 }
 
 resource "azurerm_role_assignment" "external-dns-sp-dnszone-contributor" {
   scope                = azurerm_dns_zone.dnszone.id
   role_definition_name = "Contributor"
-  principal_id         = azurerm_azuread_service_principal.external-dns-sp.id
+  principal_id         = azuread_service_principal.external-dns-sp.id
 }
 
 resource "kubernetes_secret" "azure-config-file" {
@@ -65,8 +65,8 @@ resource "kubernetes_secret" "azure-config-file" {
       "tenantId": "${var.tenant_id}",
       "subscriptionId": "${var.subscription_id}",
       "resourceGroup": "${data.azurerm_resource_group.resource-group.name}",
-      "aadClientId":"${azurerm_azuread_application.external-dns-app.application_id}",
-      "aadClientSecret": "${azurerm_azuread_service_principal_password.external-dns-sp-password.value}"
+      "aadClientId":"${azuread_application.external-dns-app.application_id}",
+      "aadClientSecret": "${azuread_service_principal_password.external-dns-sp-password.value}"
     }
     
 EOF

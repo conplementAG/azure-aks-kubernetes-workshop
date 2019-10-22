@@ -15,7 +15,7 @@ resource "azurerm_user_assigned_identity" "aad_pod_identity" {
 resource "azurerm_role_assignment" "managed_identity_operator_role_assignment" {
   scope                = azurerm_user_assigned_identity.aad_pod_identity.id
   role_definition_name = "Managed Identity Operator"
-  principal_id         = azurerm_azuread_service_principal.cluster_service_principal.id
+  principal_id         = azuread_service_principal.cluster_service_principal.id
   depends_on           = [azurerm_user_assigned_identity.aad_pod_identity]
 }
 

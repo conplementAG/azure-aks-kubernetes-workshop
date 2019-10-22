@@ -30,7 +30,7 @@ resource "azurerm_key_vault" "keyvault" {
 resource "azurerm_role_assignment" "keyvault_role_assignment" {
   scope                = azurerm_key_vault.keyvault.id
   role_definition_name = "Reader"
-  principal_id         = azurerm_azuread_service_principal.cluster_service_principal.id
+  principal_id         = azuread_service_principal.cluster_service_principal.id
 }
 
 resource "azurerm_key_vault_secret" "test_secret" {

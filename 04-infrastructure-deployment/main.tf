@@ -18,14 +18,14 @@ terraform {
 }
 
 provider "azurerm" {
-  version         = "=1.31"
+  version         = "=1.34"
   subscription_id = var.subscription_id
   tenant_id       = var.tenant_id
   # service principal client id & secret will be read from ARM_CLIENT_ID / ARM_CLIENT_SECRET env variables if set, 
   # and in that case service principal auth will be used
 }
 
-resource "azurerm_azuread_application" "cluster_app_registration" {
+resource "azuread_application" "cluster_app_registration" {
   name                       = local.aks_cluster_sp_name
   homepage                   = "https://${local.aks_cluster_sp_name}"
   identifier_uris            = ["https://${local.aks_cluster_sp_name}-uri"]
@@ -33,14 +33,14 @@ resource "azurerm_azuread_application" "cluster_app_registration" {
   available_to_other_tenants = false
 }
 
-resource "azurerm_azuread_service_principal" "cluster_service_principal" {
-  application_id = azurerm_azuread_application.cluster_app_registration.application_id
+resource "azuread_service_principal" "cluster_service_principal" {
+  application_id = azuread_application.cluster_app_registration.application_id
 
-  depends_on = [azurerm_azuread_application.cluster_app_registration]
+  depends_on = [azuread_application.cluster_app_registration]
 }
 
-resource "azurerm_azuread_service_principal_password" "cluster_service_principal_password" {
-  service_principal_id = azurerm_azuread_service_principal.cluster_service_principal.id
+resource "azuread_service_principal_password" "cluster_service_principal_password" {
+  service_principal_id = azuread_service_principal.cluster_service_principal.id
   value                = random_uuid.aks_password.result
   end_date             = timeadd(timestamp(), "8760h") # 1 year = 365 * 24 hours
 }
@@ -98,7 +98,7 @@ resource "azurerm_container_registry" "self_contained_container_registry" {
 resource "azurerm_role_assignment" "acr_pull_role_assignment" {
   scope                = var.acr_id == "None" || var.acr_id == "" ? azurerm_container_registry.self_contained_container_registry[0].id : var.acr_id
   role_definition_name = "AcrPull"
-  principal_id         = azurerm_azuread_service_principal.cluster_service_principal.id
+  principal_id         = azuread_service_principal.cluster_service_principal.id
 }
 
 resource "azurerm_kubernetes_cluster" "aks_cluster" {
@@ -134,8 +134,8 @@ resource "azurerm_kubernetes_cluster" "aks_cluster" {
   }
 
   service_principal {
-    client_id     = azurerm_azuread_application.cluster_app_registration.application_id
-    client_secret = azurerm_azuread_service_principal_password.cluster_service_principal_password.value
+    client_id     = azuread_application.cluster_app_registration.application_id
+    client_secret = azuread_service_principal_password.cluster_service_principal_password.value
   }
 
   addon_profile {
@@ -150,18 +150,18 @@ resource "azurerm_kubernetes_cluster" "aks_cluster" {
   }
 
   depends_on = [
-    azurerm_azuread_application.cluster_app_registration,
-    azurerm_azuread_service_principal_password.cluster_service_principal_password,
+    azuread_application.cluster_app_registration,
+    azuread_service_principal_password.cluster_service_principal_password,
   ]
 }
 
 resource "azurerm_role_assignment" "network_contributor_role_assignment" {
   scope                = azurerm_virtual_network.main_vnet.id
   role_definition_name = "Network Contributor"
-  principal_id         = azurerm_azuread_service_principal.cluster_service_principal.id
+  principal_id         = azuread_service_principal.cluster_service_principal.id
 }
 
 output "Credentials" {
-  value = azurerm_azuread_service_principal.cluster_service_principal.id
+  value = azuread_service_principal.cluster_service_principal.id
 }
 
