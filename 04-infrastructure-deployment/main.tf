@@ -18,11 +18,17 @@ terraform {
 }
 
 provider "azurerm" {
-  version         = "=1.34"
+  version         = "=1.35"
   subscription_id = var.subscription_id
   tenant_id       = var.tenant_id
   # service principal client id & secret will be read from ARM_CLIENT_ID / ARM_CLIENT_SECRET env variables if set, 
   # and in that case service principal auth will be used
+}
+
+provider "azuread" {
+  version = "=0.6.0"
+  subscription_id = var.subscription_id
+  tenant_id       = var.tenant_id
 }
 
 resource "azuread_application" "cluster_app_registration" {
