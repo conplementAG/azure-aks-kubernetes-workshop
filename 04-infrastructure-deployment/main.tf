@@ -1,31 +1,32 @@
 locals {
-  resource_group_name = "aksws-${var.short_region}-${var.env_tag}-rg"
-  aks_name = "aksws-${var.short_region}-${var.env_tag}-aks"
-  aks_cluster_sp_name = "aksws-${var.short_region}-${var.env_tag}-aks-service-principal"
-  vnet_name = "aksws-${var.short_region}-${var.env_tag}-vnet"
+  resource_group_name          = "aksws-${var.short_region}-${var.env_tag}-rg"
+  aks_name                     = "aksws-${var.short_region}-${var.env_tag}-aks"
+  aks_cluster_sp_name          = "aksws-${var.short_region}-${var.env_tag}-aks-service-principal"
+  vnet_name                    = "aksws-${var.short_region}-${var.env_tag}-vnet"
   log_analytics_workspace_name = "aksws-${var.short_region}-${var.env_tag}-lga"
-  acr_name = "aksws${var.short_region}${var.env_tag}acr"
+  acr_name                     = "aksws${var.short_region}${var.env_tag}acr"
 }
 
-resource "random_uuid" "aks_password" { }
+resource "random_uuid" "aks_password" {
+}
 
 terraform {
   backend "azurerm" {
-    container_name  = "keystore"
-    key             = "terraform.state"
+    container_name = "keystore"
+    key            = "terraform.state"
   }
 }
 
 provider "azurerm" {
-  version = "=1.31"
-  subscription_id = "${var.subscription_id}"
-  tenant_id       = "${var.tenant_id}"
+  version         = "=1.31"
+  subscription_id = var.subscription_id
+  tenant_id       = var.tenant_id
   # service principal client id & secret will be read from ARM_CLIENT_ID / ARM_CLIENT_SECRET env variables if set, 
   # and in that case service principal auth will be used
 }
 
 resource "azurerm_azuread_application" "cluster_app_registration" {
-  name                       = "${local.aks_cluster_sp_name}"
+  name                       = local.aks_cluster_sp_name
   homepage                   = "https://${local.aks_cluster_sp_name}"
   identifier_uris            = ["https://${local.aks_cluster_sp_name}-uri"]
   reply_urls                 = ["https://replyurl"]
@@ -33,130 +34,134 @@ resource "azurerm_azuread_application" "cluster_app_registration" {
 }
 
 resource "azurerm_azuread_service_principal" "cluster_service_principal" {
-  application_id = "${azurerm_azuread_application.cluster_app_registration.application_id}"
+  application_id = azurerm_azuread_application.cluster_app_registration.application_id
 
-  depends_on = ["azurerm_azuread_application.cluster_app_registration"]
+  depends_on = [azurerm_azuread_application.cluster_app_registration]
 }
 
 resource "azurerm_azuread_service_principal_password" "cluster_service_principal_password" {
-  service_principal_id = "${azurerm_azuread_service_principal.cluster_service_principal.id}"
-  value                = "${random_uuid.aks_password.result}"
-  end_date             = "${timeadd(timestamp(), "8760h")}" # 1 year = 365 * 24 hours
+  service_principal_id = azurerm_azuread_service_principal.cluster_service_principal.id
+  value                = random_uuid.aks_password.result
+  end_date             = timeadd(timestamp(), "8760h") # 1 year = 365 * 24 hours
 }
 
 resource "azurerm_virtual_network" "main_vnet" {
-  name                              = "${local.vnet_name}"
-  address_space                     = ["10.0.0.0/16"]
-  resource_group_name               = "${local.resource_group_name}"
-  location                          = "${var.long_region}"
+  name                = local.vnet_name
+  address_space       = ["10.0.0.0/16"]
+  resource_group_name = local.resource_group_name
+  location            = var.long_region
 
-  tags {
-    Environment = "${var.env_tag}"
+  tags = {
+    Environment = var.env_tag
   }
 }
 
 resource "azurerm_subnet" "cluster_subnet" {
-  name                              = "cluster-subnet"
-  resource_group_name               = "${local.resource_group_name}"
-  address_prefix                    = "10.0.0.0/20"  # 10.0.0.0 - 10.0.15.255
-  virtual_network_name              = "${azurerm_virtual_network.main_vnet.name}"
+  name                 = "cluster-subnet"
+  resource_group_name  = local.resource_group_name
+  address_prefix       = "10.0.0.0/20" # 10.0.0.0 - 10.0.15.255
+  virtual_network_name = azurerm_virtual_network.main_vnet.name
 }
 
 resource "azurerm_subnet" "appgw_subnet" {
-  name                              = "appgw-subnet"
-  resource_group_name               = "${local.resource_group_name}"
-  address_prefix                    = "10.0.17.0/24" # 10.0.17.0 - 10.0.17.255
-  virtual_network_name              = "${azurerm_virtual_network.main_vnet.name}"
+  name                 = "appgw-subnet"
+  resource_group_name  = local.resource_group_name
+  address_prefix       = "10.0.17.0/24" # 10.0.17.0 - 10.0.17.255
+  virtual_network_name = azurerm_virtual_network.main_vnet.name
 }
 
 resource "azurerm_log_analytics_workspace" "aks_loganalytics_workspace" {
-  name                = "${local.log_analytics_workspace_name}"
-  resource_group_name = "${local.resource_group_name}"
-  location            = "${var.long_region}"
+  name                = local.log_analytics_workspace_name
+  resource_group_name = local.resource_group_name
+  location            = var.long_region
   sku                 = "PerGB2018"
   retention_in_days   = 30
 
-  tags {
-    environment = "${var.env_tag}"
+  tags = {
+    environment = var.env_tag
   }
 }
 
 resource "azurerm_container_registry" "self_contained_container_registry" {
-  count                     = "${var.acr_id == "None" || var.acr_id == "" ? 1 : 0}"
-  name                      = "${local.acr_name}"
-  resource_group_name       = "${local.resource_group_name}"
-  location                  = "${var.long_region}"
-  admin_enabled             = true
-  sku                       = "Basic"
+  count               = var.acr_id == "None" || var.acr_id == "" ? 1 : 0
+  name                = local.acr_name
+  resource_group_name = local.resource_group_name
+  location            = var.long_region
+  admin_enabled       = true
+  sku                 = "Basic"
 
-  tags {
-    Environment = "${var.env_tag}"
+  tags = {
+    Environment = var.env_tag
   }
 }
 
 resource "azurerm_role_assignment" "acr_pull_role_assignment" {
-  scope                = "${var.acr_id == "None" || var.acr_id == "" ? azurerm_container_registry.self_contained_container_registry.id : var.acr_id}"
+  scope                = var.acr_id == "None" || var.acr_id == "" ? azurerm_container_registry.self_contained_container_registry[0].id : var.acr_id
   role_definition_name = "AcrPull"
-  principal_id         = "${azurerm_azuread_service_principal.cluster_service_principal.id}"
+  principal_id         = azurerm_azuread_service_principal.cluster_service_principal.id
 }
 
 resource "azurerm_kubernetes_cluster" "aks_cluster" {
-  name                      = "${local.aks_name}"
-  location                  = "${var.long_region}"
-  resource_group_name       = "${local.resource_group_name}"
-  dns_prefix                = "${local.aks_name}"
-  kubernetes_version        = "1.13.10" # az aks get-versions -l westeurope -o table
+  name                = local.aks_name
+  location            = var.long_region
+  resource_group_name = local.resource_group_name
+  dns_prefix          = local.aks_name
+  kubernetes_version  = "1.13.10" # az aks get-versions -l westeurope -o table
 
   agent_pool_profile {
-    name            = "default"
-    count           = 3
-    vm_size         = "Standard_DS2_v2"
-    vnet_subnet_id  = "${azurerm_subnet.cluster_subnet.id}"
-    type            = "VirtualMachineScaleSets"
+    name           = "default"
+    count          = 3
+    vm_size        = "Standard_DS2_v2"
+    vnet_subnet_id = azurerm_subnet.cluster_subnet.id
+    type           = "VirtualMachineScaleSets"
   }
 
   role_based_access_control {
     azure_active_directory {
-      server_app_id = "${var.cluster_server_app_id}"
-      server_app_secret = "${var.cluster_server_app_secret}"
-      client_app_id = "${var.cluster_client_app_id}"
+      server_app_id     = var.cluster_server_app_id
+      server_app_secret = var.cluster_server_app_secret
+      client_app_id     = var.cluster_client_app_id
     }
     enabled = true
   }
 
   network_profile {
-      network_plugin = "azure"
-      network_policy = "azure"
-      service_cidr   = "10.1.0.0/24"
-      dns_service_ip = "10.1.0.10"
-      docker_bridge_cidr = "172.17.0.1/16"
+    network_plugin     = "azure"
+    network_policy     = "azure"
+    service_cidr       = "10.1.0.0/24"
+    dns_service_ip     = "10.1.0.10"
+    docker_bridge_cidr = "172.17.0.1/16"
   }
 
   service_principal {
-    client_id     = "${azurerm_azuread_application.cluster_app_registration.application_id}"
-    client_secret = "${azurerm_azuread_service_principal_password.cluster_service_principal_password.value}"
+    client_id     = azurerm_azuread_application.cluster_app_registration.application_id
+    client_secret = azurerm_azuread_service_principal_password.cluster_service_principal_password.value
   }
 
   addon_profile {
     oms_agent {
       enabled                    = true
-      log_analytics_workspace_id = "${azurerm_log_analytics_workspace.aks_loganalytics_workspace.id}"
+      log_analytics_workspace_id = azurerm_log_analytics_workspace.aks_loganalytics_workspace.id
     }
   }
 
-  tags {
-    Environment = "${var.env_tag}"
+  tags = {
+    Environment = var.env_tag
   }
 
-  depends_on = ["azurerm_azuread_application.cluster_app_registration", "azurerm_azuread_service_principal_password.cluster_service_principal_password"]
+  depends_on = [
+    azurerm_azuread_application.cluster_app_registration,
+    azurerm_azuread_service_principal_password.cluster_service_principal_password,
+  ]
 }
 
 resource "azurerm_role_assignment" "network_contributor_role_assignment" {
-  scope                = "${azurerm_virtual_network.main_vnet.id}"
+  scope                = azurerm_virtual_network.main_vnet.id
   role_definition_name = "Network Contributor"
-  principal_id         = "${azurerm_azuread_service_principal.cluster_service_principal.id}"
+  principal_id         = azurerm_azuread_service_principal.cluster_service_principal.id
 }
 
 output "Credentials" {
-  value = "${azurerm_azuread_service_principal.cluster_service_principal.id}"
+  value = azurerm_azuread_service_principal.cluster_service_principal.id
 }
+
