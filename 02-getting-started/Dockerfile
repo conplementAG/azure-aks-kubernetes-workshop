@@ -13,7 +13,7 @@ RUN apk add libc6-compat
 # Azure CLI storage account related commands do not work without
 RUN pip install --upgrade pip
 
-ARG TERRAFORM_VERSION=0.11.13
+ARG TERRAFORM_VERSION=0.12.12
 
 WORKDIR /usr/downloads
 
