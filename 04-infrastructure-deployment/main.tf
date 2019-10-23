@@ -26,7 +26,7 @@ provider "azurerm" {
 }
 
 provider "azuread" {
-  version = "=0.6.0"
+  version         = "=0.6.0"
   subscription_id = var.subscription_id
   tenant_id       = var.tenant_id
 }
