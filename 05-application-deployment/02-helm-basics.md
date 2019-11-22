@@ -57,7 +57,7 @@ https://github.com/helm/charts/tree/master/stable
 - Inspect and deploy the service account with `kubectl apply -f resources/helm-rbac.yaml`
 - Install Tiller with `helm init --service-account tiller --wait --upgrade`
 
-2. Helm 2 topics
+2. Other Helm 2 topics
 
 - When deploying using Helm 2, you should not do manual changes on the deployed resources since Helm only tracks changes done through the Helm CLI!
 - Migrate from Helm 2 to Helm 3 with [2to3](https://helm.sh/blog/migrate-from-helm-v2-to-helm-v3/)
