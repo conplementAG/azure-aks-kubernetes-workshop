@@ -10,8 +10,6 @@ kubectl get deployments
  
 kubectl get pods,services,deployments -o yaml
 
-
-
 kubectl get nodes
  
 ## INFORMATION
