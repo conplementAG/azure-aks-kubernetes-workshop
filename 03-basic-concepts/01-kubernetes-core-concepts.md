@@ -46,7 +46,36 @@ Best practicies for Pods:
 * A stable endpoint to connect to "something"
 
 #### Volume
+
 #### Namespace
+
+* Logical isolation of a K8s cluster
+* Each object is part of one namespace (excluding Nodesand other low level resources) - use `kubectl api-resources --namespaced=false`
+* A scope for unique names inside the namespace
+
+K8s starts with three basic namespaces:
+
+* default - the default namespace for objects with no other namespace
+* kube-system - holds objects created by the Kubernetes system
+* kube-public - created automatically and is readable by all users
+
+Example usage of namespaces splitting the cluster
+
+* Different environment (we prefer to have physicall isolation between env)
+* Different teams (with ResourceQuota constraints)
+* Partitioning customers in a multitenancy scenario
+
+Some useful commands when dealing with namespaces:
+
+- Set default context for kubectl: `kubectl config set-context --current --namespace=xxNamespacexx`
+- List all namespaces: `kubectl get namespaces`
+
+#### Hands on for Pods
+
+* Lets open and analyze the file `./namespace-demo.yml`
+* Lets deploy it to the cluster `kubectl apply -f namespace-demo.yml`
+* List all pods in namespace `kubectl get pods --namespace=demo-ns`
+* Lets clear the resources `kubectl delete namespace demo-ns`
 
 ### Controller Objects
 
