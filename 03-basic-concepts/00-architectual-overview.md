@@ -34,3 +34,6 @@ This node has an api for communication.
 etcd is the internal storage (key-value) which stores all configurations.
 A scheduler handles and assign Pod´s without nodes.
 A controller manager for different activities like nodes are down or taking care of Pod replicas.
+
+-> to work with it and use the "desired state management" concept
+-> now we need infrastructure (terraform or quick and dirty in the azure portal)
