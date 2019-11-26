@@ -45,7 +45,6 @@ Best practicies for Pods:
 
 * A stable endpoint to connect to "something"
 
-
 #### Volume
 #### Namespace
 
@@ -58,7 +57,18 @@ Best practicies for Pods:
 * Self healing capability
 * Scale up/down capability
 
+Best practicies Deployments
 
+* Use only for stateless services
+
+#### Hands on Deployments 
+
+* Lets open and analyze the file `./deployment.yml`
+* Lets deploy it to the cluster `kubectl apply -f deployment.yml`
+* List all pods `kubectl get pods`
+* Lets kill it `kubectl delete pod xxxPodNamexxx`
+* Lets see the self healing capability `kubectl get pods`
+* Clear the resources `kubectl delete deployment web`
 
 #### StatefulSet
 #### DeamonSet
