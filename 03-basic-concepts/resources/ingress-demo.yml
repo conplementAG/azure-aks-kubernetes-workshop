@@ -1,0 +1,72 @@
+
+kind: Pod
+apiVersion: v1
+metadata:
+  name: hello-app
+  labels:
+    app: hello
+spec:
+  containers:
+    - name: hello-app
+      image: hashicorp/http-echo
+      args:
+        - "-text=hello"
+---
+
+kind: Service
+apiVersion: v1
+metadata:
+  name: hello-service
+spec:
+  selector:
+    app: hello
+  ports:
+    - port: 5678
+
+---
+
+kind: Pod
+apiVersion: v1
+metadata:
+  name: world-app
+  labels:
+    app: world
+spec:
+  containers:
+    - name: world-app
+      image: hashicorp/http-echo
+      args:
+        - "-text=world"
+
+---
+
+kind: Service
+apiVersion: v1
+metadata:
+  name: world-service
+spec:
+  selector:
+    app: world
+  ports:
+    - port: 5678
+
+---
+
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: hello-world-ingress
+  annotations:
+    ingress.kubernetes.io/rewrite-target: /
+spec:
+  rules:
+  - http:
+      paths:
+        - path: /hello
+          backend:
+            serviceName: hello-service
+            servicePort: 5678
+        - path: /world
+          backend:
+            serviceName: world-service
+            servicePort: 5678

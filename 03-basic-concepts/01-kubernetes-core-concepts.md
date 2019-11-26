@@ -35,8 +35,8 @@ Best practicies for Pods:
 
 #### Hands on for Pods
 
-* Lets open and analyze the file `./pod.yml`
-* Lets deploy it to the cluster `kubectl apply -f pod.yml`
+* Lets open and analyze the file `./resources/pod.yml`
+* Lets deploy it to the cluster `kubectl apply -f resources/pod.yml`
 * List all pods `kubectl get pods`
 * Lets kill it `kubectl delete pod xxxPodNamexxx`
 * Lets see if it is still there `kubectl get pods`
@@ -68,8 +68,8 @@ Drawing Credits @Horacio Gonzalez
 
 Lets try to open a simple web page to the world using a deployment and a service of type Loadbalancer:
 
-* Lets open and analyze the file `./loadbalancer.yml`
-* Lets deploy it to the cluster `kubectl apply -f loadbalancer.yml`
+* Lets open and analyze the file `./resources/loadbalancer.yml`
+* Lets deploy it to the cluster `kubectl apply -f resources/loadbalancer.yml`
 * List deployments `kubectl get deployments`
 * List all pods `kubectl get pods`
 * List services `kubectl get services`
@@ -85,7 +85,6 @@ Lets try something else (participants create the solution):
 Tips:
 * Using this command you can get an interactive shell to an alpine container `kubectl run -i --tty alpine --image=alpine --restart=Never -- sh`
 * Install curl on the container `apk add --no-cache curl`
-
 
 #### Volume
 
@@ -114,8 +113,8 @@ Some useful commands when dealing with namespaces:
 
 #### Hands on for Pods
 
-* Lets open and analyze the file `./namespace-demo.yml`
-* Lets deploy it to the cluster `kubectl apply -f namespace-demo.yml`
+* Lets open and analyze the file `./resources/namespace-demo.yml`
+* Lets deploy it to the cluster `kubectl apply -f resources/namespace-demo.yml`
 * List all pods in namespace `kubectl get pods --namespace=demo-ns`
 * Lets clear the resources `kubectl delete namespace demo-ns`
 
@@ -155,8 +154,8 @@ Best practicies Deployments
 
 #### Hands on Deployments 
 
-* Lets open and analyze the file `./deployment.yml`
-* Lets deploy it to the cluster `kubectl apply -f deployment.yml`
+* Lets open and analyze the file `./resources/deployment.yml`
+* Lets deploy it to the cluster `kubectl apply -f resources/deployment.yml`
 * List all pods `kubectl get pods`
 * Lets kill it `kubectl delete pod xxxPodNamexxx`
 * Lets see the self healing capability `kubectl get pods`
@@ -171,3 +170,4 @@ Best practicies Deployments
 - Nodes
 
 See this [overview page](https://kubernetes.io/docs/concepts/) for more details.
+
