@@ -4,6 +4,7 @@
 - contains "all" you need
 - use less hardware resources than VM´s
 - you can scale
+- designed for microservices
 
 ## docker build
 - dockerfile defines everything you need for your app.
