@@ -44,6 +44,48 @@ Best practicies for Pods:
 #### Service
 
 * A stable endpoint to connect to "something"
+* When that something is a Pod it targets it by Label Selector
+* Service can map an incoming port to any targetPort (default incomePort=targetPort)
+* Services support TCP, UDP
+
+Types of services:
+
+* ClusterIP - exposes the service on a cluster internal IP. It is reachable only within cluster
+* NodePort - exposes the service on each Nodes IP at a static port. Can be accessed from outside the cluster
+* LoadBalancer - expose the service externally using a cloud provider loadbalancer
+
+![ClusterIp](images/clusterip.jpeg "ClusterIp") 
+</br>
+![NodePort](images/nodeport.jpeg "NodePort") 
+</br>
+![LoadBalancer](images/loadbalancer.jpeg "LoadBalancer") 
+
+Drawing Credits @Horacio Gonzalez 
+</br>
+[More information on types of services](https://www.ovh.com/blog/getting-external-traffic-into-kubernetes-clusterip-nodeport-loadbalancer-and-ingress/)
+
+#### Hands on Services
+
+Lets try to open a simple web page to the world using a deployment and a service of type Loadbalancer:
+
+* Lets open and analyze the file `./loadbalancer.yml`
+* Lets deploy it to the cluster `kubectl apply -f loadbalancer.yml`
+* List deployments `kubectl get deployments`
+* List all pods `kubectl get pods`
+* List services `kubectl get services`
+* Go to azure portal and find the load balancer (get its public ip)
+* In your browser paste the IP and hit enter
+
+Lets try something else (participants create the solution):
+
+* Use the same depployment as on the previous example
+* Create a Service of type Cluster IP
+* From within the cluster try to hit the service with curl (provide solution based on gained knowledge) (explain Service Discover basics)
+
+Tips:
+* Using this command you can get an interactive shell to an alpine container `kubectl run -i --tty alpine --image=alpine --restart=Never -- sh`
+* Install curl on the container `apk add --no-cache curl`
+
 
 #### Volume
 
