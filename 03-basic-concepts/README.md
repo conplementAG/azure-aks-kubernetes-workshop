@@ -2,6 +2,7 @@
 
 [_Back to agenda_](../README.md)
 
+- [Introduction to Kubectl](00-kubectl-intro.md)
 - [Kubernetes Core Concepts](01-kubernetes-core-concepts.md)
 - [Azure Kubernetes RBAC](02-azure-kubernetes-rbac.md)
 - [System Components](03-system-components.md)
