@@ -1,6 +1,6 @@
 # architectual overview 
 
-![Overview(images/why_K8s_story.png)
+![Overview](images/why_K8s_story.png)
 
 ## 1) docker files / docker-compose files
 Docker is about starting and stopping the images, or use docker compose to handle more images and the relationship between them but all the things like configuration, access, linking between containers and metrics you need to take care of.
