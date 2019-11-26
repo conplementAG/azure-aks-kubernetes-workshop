@@ -53,9 +53,30 @@ Best practicies for Pods:
 #### ReplicaSet
 #### Deployment
 
+Why Pod replication?
+
+* Reliability
+* Load balancing
+* Scaling
+
+A brief history?
+
+Replication Controller is the original form of replication in
+K8s. It is a structure that enables you to easily create multiple pods, then make sure that that number of pods always exists. 
+
+Replica Sets are same as replication controller the only difference lies that a replica set supports set-based selector whreas a RC only supports equality based selector requirements.
+
+Equality-based selector: `environment = production; tier != frontend`
+
+Set-based requirement: `environment in (production, qa); !partition`
+
+Deployments
+
 * Manages a set of Pods (replicas)
 * Self healing capability
 * Scale up/down capability
+
+![Deployment](images/deployment.png "Deployment") 
 
 Best practicies Deployments
 
