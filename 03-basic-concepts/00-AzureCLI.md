@@ -10,6 +10,3 @@ az account show
 az account set -s <SUBSCRIPTION_ID>
 az aks list -o table
 az aks get-credentials -n <AKS-NAME> -g <RG> --admin
-
-## check connection to the cluster
-kubectl cluster-info
