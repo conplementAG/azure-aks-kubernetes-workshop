@@ -59,7 +59,7 @@ Declarative systems:
 
 1. Run pod: `kubectl run --image=nginx nginx-app --port=80`
 2. List pods: `kubectl get pods`
-3. Forward local port to pod port: `kubectl port-forwad xxxPodNamexxx 8080:80`
+3. Forward local port to pod port: `kubectl port-forward xxxPodNamexxx 8080:80`
 4. Test it with curl from a new shell instance: `curl localhost:8080`
 5. Show me the logs of the pod: `kubectl logs xxxPodNamexxx`
 6. Delete the resources `kubectl delete deployment nginx-app`
