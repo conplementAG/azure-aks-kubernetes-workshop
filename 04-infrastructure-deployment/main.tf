@@ -88,24 +88,24 @@ resource "azurerm_log_analytics_workspace" "aks_loganalytics_workspace" {
   }
 }
 
-resource "azurerm_container_registry" "self_contained_container_registry" {
-  count               = var.acr_id == "None" || var.acr_id == "" ? 1 : 0
-  name                = local.acr_name
-  resource_group_name = local.resource_group_name
-  location            = var.long_region
-  admin_enabled       = true
-  sku                 = "Basic"
+# resource "azurerm_container_registry" "self_contained_container_registry" {
+#   count               = var.acr_id == "None" || var.acr_id == "" ? 1 : 0
+#   name                = local.acr_name
+#   resource_group_name = local.resource_group_name
+#   location            = var.long_region
+#   admin_enabled       = true
+#   sku                 = "Basic"
 
-  tags = {
-    Environment = var.env_tag
-  }
-}
+#   tags = {
+#     Environment = var.env_tag
+#   }
+# }
 
-resource "azurerm_role_assignment" "acr_pull_role_assignment" {
-  scope                = var.acr_id == "None" || var.acr_id == "" ? azurerm_container_registry.self_contained_container_registry[0].id : var.acr_id
-  role_definition_name = "AcrPull"
-  principal_id         = azuread_service_principal.cluster_service_principal.id
-}
+# resource "azurerm_role_assignment" "acr_pull_role_assignment" {
+#   scope                = var.acr_id == "None" || var.acr_id == "" ? azurerm_container_registry.self_contained_container_registry[0].id : var.acr_id
+#   role_definition_name = "AcrPull"
+#   principal_id         = azuread_service_principal.cluster_service_principal.id
+# }
 
 resource "azurerm_kubernetes_cluster" "aks_cluster" {
   name                = local.aks_name
@@ -122,14 +122,14 @@ resource "azurerm_kubernetes_cluster" "aks_cluster" {
     type           = "VirtualMachineScaleSets"
   }
 
-  role_based_access_control {
-    azure_active_directory {
-      server_app_id     = var.cluster_server_app_id
-      server_app_secret = var.cluster_server_app_secret
-      client_app_id     = var.cluster_client_app_id
-    }
-    enabled = true
-  }
+  # role_based_access_control {
+  #   azure_active_directory {
+  #     server_app_id     = var.cluster_server_app_id
+  #     server_app_secret = var.cluster_server_app_secret
+  #     client_app_id     = var.cluster_client_app_id
+  #   }
+  #   enabled = true
+  # }
 
   network_profile {
     network_plugin     = "azure"
