@@ -14,7 +14,7 @@
 * Containers in Pod reach each other using `localhost`
 * Each Pod gets assigned a unique IP address.
 
-Pods are ephemeral. They are not designed to run forever. Once its terminated it cannot be brought back. They do not 'heal' nor repair itslef. Each time its recreated it gets a new identity and a new IP.
+Pods are ephemeral. They are not designed to run forever. Once its terminated it cannot be brought back. They do not 'heal' nor repair itself. Each time it's recreated it gets a new identity and a new IP.
 
 Beacuse they are ephemeral, it is not recommended to create Pods directly. Use a controller like a Deployment which creates and manages Pods for you.
 
@@ -26,7 +26,7 @@ Pod Status:
 * Failed
 * Unknown
 
-Best practicies for Pods:
+Best practices for Pods:
 
 * Set Pod limits (CPU and memory)
 * Keep your Pods small (best practice one container per Pod)
