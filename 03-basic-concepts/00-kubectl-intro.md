@@ -1,3 +1,5 @@
+SET ENV Varaible from Cloud Shell : export $(cat config.env | sed -e /^$/d -e /^#/d | xargs)
+
 ## INTRODUCTION TO KUBECTL
 
 * kubectl is the only tool we'll need to talk to K8s
