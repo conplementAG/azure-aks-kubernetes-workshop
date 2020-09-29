@@ -1,8 +1,8 @@
-# Azure Kubernetes Workshop
+# Azure AKS Kubernetes Workshop
 
-![Azure Kubernetes Workshop](conplement-github-logo.jpg)
+![Azure AKS Kubernetes Workshop](conplement-github-logo.jpg)
 
-`azure-kubernetes-workshop` is a workshop documentation with hands-on exercises for people already working with Kubernetes. Throughout the workshop a main Docker container will be used which is to be built and started in an interactive mode.
+`azure-aks-kubernetes-workshop` is a workshop documentation with hands-on exercises for people already working with Kubernetes. Throughout the workshop a main Docker container will be used which is to be built and started in an interactive mode.
 
 ---
 
